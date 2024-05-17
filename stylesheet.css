@@ -73,6 +73,11 @@ h2[header] {
     text-wrap: balance;
 }
 
+img {
+    max-inline-size: 100%;
+    max-block-size: 100%;
+}
+
 img[header] {
     aspect-ratio: 1 / 1;
     object-fit: cover;
