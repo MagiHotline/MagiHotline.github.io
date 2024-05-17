@@ -36,6 +36,12 @@ footer {
     width: 100%;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 header[top] {
     padding-top: 5%;
 }
@@ -136,7 +142,7 @@ figure {
         "Helvetica Neue",
         Arial,
         sans-serif;
-    padding-bottom: 70px;
+    padding-bottom: 50px;
     overflow-x: hidden;
 }
 
