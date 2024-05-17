@@ -36,6 +36,15 @@ footer {
     width: 100%;
 }
 
+header[top] {
+    padding-top: 5%;
+}
+
+section[main] {
+    max-width: 700px;
+    margin: 0 auto 48px;
+}
+
 .container[header] {
     display: flex;
     flex-direction: row;
