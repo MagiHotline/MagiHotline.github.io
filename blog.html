@@ -99,7 +99,7 @@
                     <a
                         href="blog.html"
                         onclick="showSection('blog'); event.preventDefault();"
-                        class
+                        class="active"
                         >blog</a
                     >
                     <a
@@ -121,7 +121,60 @@
                         >about</a
                     >
                 </nav>
-                <div id="content"></div>
+                <div id="content">
+                    <section id="blog" style="display: block">
+                        <section main>
+                            <h2 main>Blogs</h2>
+                            <nav blog>
+                                <button onclick="filterPosts('all')" class>
+                                    All
+                                </button>
+                                <button onclick="filterPosts('misc')" class>
+                                    Misc
+                                </button>
+                                <button onclick="filterPosts('cs')" class>
+                                    CS
+                                </button>
+                                <button onclick="filterPosts('math')" class>
+                                    Math
+                                </button>
+                                <button onclick="filterPosts('nerdy')" class>
+                                    Nerdy
+                                </button>
+                            </nav>
+                            <div id="postsContainer">
+                                <div id="misc">
+                                    <article blog="post">
+                                        <a onclick="loadPost('misc')" blog
+                                            >Ehm Ehm</a
+                                        >
+                                        <div class="date">
+                                            Written on 25 May 2024
+                                        </div>
+                                        <div class="entry">
+                                            <p>
+                                                Lorem Ipsum Bla bla bla bla Bla
+                                                bla bla bl Bla bla bla bl
+                                            </p>
+                                        </div>
+                                        <a
+                                            href="javascript:void(0)"
+                                            onclick="loadPost('misc')"
+                                            read
+                                            >read more</a
+                                        >
+                                    </article>
+                                </div>
+                                <!-- COMPUTER SCIENCE POST -->
+                                <div id="cs"></div>
+                                <!-- MATH POST -->
+                                <div id="math"></div>
+                                <!-- NERDY POST -->
+                                <div id="nerdy"></div>
+                            </div>
+                        </section>
+                    </section>
+                </div>
             </main>
         </header>
     </body>
