@@ -136,8 +136,9 @@ footer[header] {
     color: #555;
     font-size: small;
     display: flex;
-    gap: 4px;
+    gap: 6px;
     margin-top: 8px;
+    align-items: crnter;
 }
 
 footer[header] a[header] {
@@ -217,6 +218,20 @@ a[footer]:hover {
     h1[cite],
     p[caption] {
         padding: 1rem 5%;
+    }
+
+    .links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+    .links a {
+        margin: 0 5px; /* spacing between items */
+    }
+    .links img {
+        width: 20px;
+        height: 20px;
     }
 
     h1[cite],
@@ -413,7 +428,7 @@ h1[cite] {
 
 article[blog] {
     border-radius: 20px;
-    border: 4.5px solid #f2f2f2;
+    border: 4px solid #f2f2f2;
     gap: 15px;
     display: flex;
     flex-direction: column;
@@ -585,4 +600,133 @@ p[caption] {
     border-style: inset;
     border-width: 1px;
     margin-bottom: 5%;
+}
+
+/* -------------------------- ABOUT -------------------------- */
+
+ul[work] {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+article[work] h3[work] {
+    font-weight: 500;
+    color: #111;
+}
+
+article[work] a[work] {
+    color: #111;
+}
+
+article[work] a[work]:hover {
+    text-decoration: underline;
+}
+
+article[work] h4[work] {
+    color: #222;
+    font-weight: 400;
+}
+
+header[work] {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+}
+
+time[work] {
+    color: #555;
+    font-size: medium;
+    min-width: 102px;
+    cursor: default;
+}
+
+[work][data-title]:hover:after {
+    opacity: 1;
+    transition: all 0.1s ease-in-out 0.5s;
+    visibility: visible;
+}
+
+[work][data-title]:after {
+    content: attr(data-title);
+    background-color: #333;
+    color: #fff;
+    font-size: medium;
+    font-family:
+        Menlo,
+        Monaco,
+        Lucida Console,
+        Courier New,
+        monospace;
+    position: absolute;
+    padding: 0.2rem 0.5rem;
+    bottom: -1.4rem;
+    left: 50%;
+    white-space: nowrap;
+    box-shadow: 1px 1px 1px #222;
+    opacity: 0;
+    border: 1px solid #111111;
+    z-index: 99999;
+    visibility: hidden;
+    border-radius: 6px;
+}
+
+[work][data-title] {
+    position: relative;
+}
+
+@media (width <= 700px) {
+    time[work] {
+        text-align: right;
+    }
+}
+
+ul[education] {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+article[education] h3[education] {
+    font-weight: 500;
+    color: #111;
+}
+
+header[education] {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+}
+
+time[education] {
+    color: #555;
+    font-size: medium;
+    min-width: 102px;
+}
+
+@media (width <= 700px) {
+    time[education] {
+        text-align: right;
+    }
+}
+
+ul[foot] {
+    padding-bottom: 5%;
+    display: inline-flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+li[skills] {
+    align-items: center;
+    background: #eee;
+    border-radius: 6px;
+    color: #000;
+    display: flex;
+    font-size: smaller;
+    font-weight: 500;
+    gap: 7px;
+    padding: 0.3rem 0.6rem;
 }
