@@ -6,7 +6,8 @@ html {
         Courier New,
         Courier,
         monospace;
-    background: #fff; /* White */
+    background: #fff;
+    /* White */
     letter-spacing: -0.025rem;
     overflow-x: hidden;
 }
@@ -71,6 +72,7 @@ h4 {
         Helvetica Neue,
         sans-serif;
 }
+
 /* -------------------------- HEADER -------------------------- */
 header,
 main,
@@ -202,16 +204,18 @@ a[footer]:hover {
     }
 }
 
-@media (width <= 700px) {
+@media (width <=700px) {
     section[main] {
         margin-bottom: 38px;
     }
+
     section[template] {
         margin-bottom: 38px;
     }
 }
 
 @media (max-width: 700px) {
+
     section[main],
     .site-footer,
     section[template],
@@ -226,9 +230,12 @@ a[footer]:hover {
         align-items: center;
         padding: 10px;
     }
+
     .links a {
-        margin: 0 5px; /* spacing between items */
+        margin: 0 5px;
+        /* spacing between items */
     }
+
     .links img {
         width: 20px;
         height: 20px;
@@ -246,19 +253,19 @@ a[footer]:hover {
     }
 }
 
-@media (width <= 700px) {
+@media (width <=700px) {
     time[education] {
         text-align: right;
     }
 }
 
-@media (width <= 700px) {
+@media (width <=700px) {
     time[work] {
         text-align: right;
     }
 }
 
-@media (width <= 700px) {
+@media (width <=700px) {
     .container[header] {
         flex-direction: column-reverse;
     }
@@ -299,7 +306,7 @@ a[footer]:hover {
     }
 }
 
-@media (width <= 700px) {
+@media (width <=700px) {
     ul[project] {
         margin-inline: 0px;
     }
@@ -309,6 +316,7 @@ a[footer]:hover {
         box-shadow: 0 1px 1px #f2f2f2;
         padding: 0 0 16px;
     }
+
     article[class] {
         border: none;
         box-shadow: 0 1px 1px #f2f2f2;
@@ -320,6 +328,7 @@ a[footer]:hover {
     article[project] h3[project] span[project] li[projSkills] {
         animation-name: none;
     }
+
     article[class] {
         animation-name: none;
     }
@@ -335,7 +344,7 @@ a[footer]:hover {
     }
 }
 
-@media (width <= 700px) {
+@media (width <=700px) {
     main[tmp] {
         padding: 2rem;
     }
@@ -353,7 +362,8 @@ a[footer]:hover {
 
 @media (max-width: 700px) {
     .mobile-only {
-        display: block; /* Show mobile links on small screens */
+        display: block;
+        /* Show mobile links on small screens */
         padding: 10px;
         margin: 5px;
         border-radius: 6px;
@@ -361,8 +371,10 @@ a[footer]:hover {
         color: #444;
         text-align: center;
     }
+
     .desktop-only {
-        display: none; /* Hide iframes on small screens */
+        display: none;
+        /* Hide iframes on small screens */
     }
 }
 
@@ -427,14 +439,14 @@ h1[cite] {
 }
 
 article[blog] {
-    border-radius: 20px;
-    border: 4px solid #f2f2f2;
-    gap: 15px;
+    border-radius: 8px;
+    border: 1px solid #f2f2f2;
+    gap: 16px;
     display: flex;
     flex-direction: column;
     padding: 16px;
     gap: 16px;
-    height: 100%;
+    height: 100% margin-bottom: 10px;
 }
 
 header[blog] {
@@ -442,10 +454,6 @@ header[blog] {
     flex-shrink: 0;
     flex-basis: content;
     position: relative;
-}
-
-article[blog] {
-    margin-bottom: 4px;
 }
 
 h3[blog] {
@@ -528,7 +536,7 @@ section[template] {
     margin: 0 auto 48px;
 }
 
-@media (width <= 700px) {
+@media (width <=700px) {
     section[template] {
         margin-bottom: 38px;
     }
@@ -676,7 +684,7 @@ time[work] {
     position: relative;
 }
 
-@media (width <= 700px) {
+@media (width <=700px) {
     time[work] {
         text-align: right;
     }
@@ -706,7 +714,7 @@ time[education] {
     min-width: 102px;
 }
 
-@media (width <= 700px) {
+@media (width <=700px) {
     time[education] {
         text-align: right;
     }
@@ -729,4 +737,74 @@ li[skills] {
     font-weight: 500;
     gap: 7px;
     padding: 0.3rem 0.6rem;
+}
+
+/* -------------------------- CATEGORIES -------------------------- */
+
+article[class] {
+    border-radius: 8px;
+    border: 1px solid #f2f2f2;
+    gap: 16px;
+    display: flex;
+    flex-direction: row;
+    padding: 16px;
+    gap: 16px;
+    height: 100% margin-bottom: 4px;
+
+}
+
+header[class] {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: content;
+    position: relative;
+}
+
+h3[class] {
+    font-weight: 500;
+}
+
+article[class] a[class] {
+    color: #111
+}
+
+article[class] a[pres] a[class]:hover {
+    text-decoration: underline
+}
+
+p[class] {
+    font-size: medium;
+    margin-bottom: 8px
+}
+
+article[class] p[class] {
+    font-size: medium;
+    margin-bottom: 4px
+}
+
+footer[class] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    font-size: small;
+    width: 100%;
+}
+
+footer[class] span[class] {
+    border-radius: 6px;
+    background: #eee;
+    color: #444;
+    font-size: small;
+    font-weight: 500;
+    padding: .2rem .6rem;
+    text-align: center;
+    width: 100%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 16px;
 }

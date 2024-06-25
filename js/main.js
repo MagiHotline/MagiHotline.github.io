@@ -20,7 +20,7 @@ function filterPosts(category) {
     }
   });
 
-  // Sort all visible posts by date regardless of category
+  // Riordina tutti i post in base alla data, a prescindere dalla categoria
   sortPosts(postsArray.filter((post) => post.style.display !== "none"));
 }
 
@@ -72,4 +72,19 @@ function backToBlog() {
   localStorage.removeItem("currentPost");
   localStorage.setItem("activeSection", "blog");
   updateURL("blog");
+}
+
+function handleNavigation() {
+  const pathSegments = window.location.pathname
+    .split("/")
+    .filter((segment) => segment);
+  const sectionId = pathSegments[0];
+  const postId = pathSegments[1];
+
+  if (sectionId === "blogPost" && postId) {
+    loadPost(postId);
+  }
+
+  const currentCategory = localStorage.getItem("currentCategory") || "all";
+  filterPosts(currentCategory);
 }
