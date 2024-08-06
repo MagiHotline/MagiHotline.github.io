@@ -1,0 +1,51 @@
+---
+import Layout from "../layouts/Layout.astro";
+const pageTitle = "Blog";
+---
+
+<Layout pageTitle={pageTitle}>
+    <!-- Aggiungere script per filtrare i post -->
+    <script></script>
+    <div id="content">
+        <section id="blog" style="display: block" main>
+            <section main>
+                <h2 main>Blogs</h2>
+                <nav blog>
+                    <button onclick="filterPosts('all')" class> All </button>
+                    <button onclick="filterPosts('misc')" class> Misc </button>
+                    <button onclick="filterPosts('cs')" class> CS </button>
+                    <button onclick="filterPosts('math')" class> Math </button>
+                    <button onclick="filterPosts('nerdy')" class>
+                        Nerdy
+                    </button>
+                </nav>
+                <div id="postsContainer">
+                    <div id="misc250524">
+                        <article blog="post">
+                            <a onclick="loadPost('misc')" blog>Ehm Ehm</a>
+                            <div class="date">Written on 25 May 2024</div>
+                            <div class="entry">
+                                <p>
+                                    Lorem Ipsum Bla bla bla bla Bla bla bla bl
+                                    Bla bla bla bl
+                                </p>
+                            </div>
+                            <a onclick="loadPost('misc')" read>read more</a>
+                        </article>
+                    </div>
+                    <!-- COMPUTER SCIENCE POST -->
+                    <div id="cs"></div>
+                    <!-- MATH POST -->
+                    <div id="math"></div>
+                    <!-- NERDY POST -->
+                    <div id="nerdy"></div>
+                </div>
+            </section>
+        </section>
+        <!-- DOVE ANDRANNO POSTATI I BLOGS -->
+        <section id="blogPost" style="display: none" main>
+            <button onclick="backToBlog()" main>Back to blog</button>
+            <div id="postContent"></div>
+        </section>
+    </div>
+</Layout>

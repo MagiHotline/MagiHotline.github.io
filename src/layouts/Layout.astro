@@ -1,0 +1,26 @@
+---
+import Nav from "../components/Nav.astro";
+import Header from "../components/Header.astro";
+import "../styles/stylesheet.css";
+
+const { pageTitle } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head class="">
+        <meta charset="utf-8" />
+        <meta
+            name="description"
+            content="Paolo Imbriani - CS Student @ UNIVR, future researcher in the Computer Science Theory"
+        />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="images/icon.png" />
+        <title>Paolo Imbriani</title>
+    </head>
+    <body>
+        <Header />
+        <Nav />
+        <slot />
+    </body>
+</html>
