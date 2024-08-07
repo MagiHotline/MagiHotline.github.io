@@ -86,11 +86,11 @@ footer {
     box-sizing: border-box;
 }
 
-header[top] {
+header.top {
     padding-top: 5%;
 }
 
-.container[header] {
+div.container {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -100,32 +100,47 @@ header[top] {
     margin: auto;
 }
 
-.info[header] {
+.links {
+    align-items: center;
+    padding-top: 10px;
+}
+
+.links a {
+    margin: 0 5px;
+    /* spacing between items */
+}
+
+.links img {
+    width: 20px;
+    height: 20px;
+}
+
+div.header {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     padding-right: 32px;
 }
 
-h1[header] {
+h1.header {
     font-size: xx-large;
 }
 
-h2[header] {
+h2.header {
     color: #444;
     font-weight: 500;
     font-size: large;
     text-wrap: balance;
 }
 
-img[header] {
+img.header {
     aspect-ratio: 1 / 1;
     object-fit: cover;
     width: 128px;
     border-radius: 16px;
 }
 
-span[header] {
+span.header {
     color: #666;
     display: flex;
     align-items: center;
@@ -134,16 +149,16 @@ span[header] {
     letter-spacing: -0.05rem;
 }
 
-footer[header] {
+footer.header {
     color: #555;
     font-size: small;
     display: flex;
     gap: 6px;
     margin-top: 8px;
-    align-items: crnter;
+    align-items: center;
 }
 
-footer[header] a[header] {
+footer.header a.header {
     color: #777;
     display: inline-flex;
     align-items: center;
@@ -156,7 +171,7 @@ footer[header] a[header] {
     transition: all 0.3s ease;
 }
 
-footer[header] a[header]:hover {
+footer.header a.header:hover {
     background: #eee;
     border: 1px solid #ddd;
 }
@@ -172,7 +187,7 @@ footer[header] a[header]:hover {
     line-height: 60px;
 }
 
-a[footer]:hover {
+a.footer:hover {
     cursor: pointer;
 }
 
@@ -205,22 +220,21 @@ a[footer]:hover {
 }
 
 @media (width <=700px) {
-    section[main] {
+    section.main {
         margin-bottom: 38px;
     }
 
-    section[template] {
+    section.template {
         margin-bottom: 38px;
     }
 }
 
 @media (max-width: 700px) {
-
-    section[main],
+    section.main,
     .site-footer,
-    section[template],
-    h1[cite],
-    p[caption] {
+    section.template,
+    h1.cite,
+    p.caption {
         padding: 1rem 5%;
     }
 
@@ -241,8 +255,8 @@ a[footer]:hover {
         height: 20px;
     }
 
-    h1[cite],
-    p[caption] {
+    h1.cite,
+    p.caption {
         max-width: fit-content;
     }
 
@@ -254,40 +268,40 @@ a[footer]:hover {
 }
 
 @media (width <=700px) {
-    time[education] {
+    time.education {
         text-align: right;
     }
 }
 
 @media (width <=700px) {
-    time[work] {
+    time.work {
         text-align: right;
     }
 }
 
-@media (width <=700px) {
-    .container[header] {
+@media (width <= 700px) {
+    .container.header {
         flex-direction: column-reverse;
     }
 
-    .info[header] {
+    .info.header {
         justify-content: center;
         align-items: center;
         padding-right: 0;
         text-align: center;
     }
 
-    figure[header] {
+    figure.header {
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    h2[header] {
+    h2.header {
         text-wrap: balance;
     }
 
-    figure[header] {
+    figure.header {
         margin: 0 auto;
     }
 }
@@ -307,17 +321,17 @@ a[footer]:hover {
 }
 
 @media (width <=700px) {
-    ul[project] {
+    ul.project {
         margin-inline: 0px;
     }
 
-    article[project] {
+    article.project {
         border: none;
         box-shadow: 0 1px 1px #f2f2f2;
         padding: 0 0 16px;
     }
 
-    article[class] {
+    article.class {
         border: none;
         box-shadow: 0 1px 1px #f2f2f2;
         padding: 0 0 16px;
@@ -325,11 +339,11 @@ a[footer]:hover {
 }
 
 @media print {
-    article[project] h3[project] span[project] li[projSkills] {
+    article.project h3.project span.project li.projSkills {
         animation-name: none;
     }
 
-    article[class] {
+    article.class {
         animation-name: none;
     }
 }
@@ -345,7 +359,7 @@ a[footer]:hover {
 }
 
 @media (width <=700px) {
-    main[tmp] {
+    main.tmp {
         padding: 2rem;
     }
 }
@@ -380,7 +394,7 @@ a[footer]:hover {
 
 /* -------------------------- MAIN -------------------------- */
 
-section[main] {
+section.main {
     max-width: 700px;
     margin: 0 auto 48px;
 }
@@ -407,26 +421,26 @@ nav a.active {
     font-weight: bold;
 }
 
-h2[main] {
+.main > h2 {
     margin-bottom: 8px;
     font-weight: 700;
     line-height: 1.5;
     font-size: x-large;
 }
 
-body[main] {
+.main > body {
     text-align: center;
     color: #000;
 }
 
-button[main] {
+.main > button {
     color: #4183c4;
     cursor: pointer;
 }
 
 /* -------------------------- BLOG -------------------------- */
 
-h1[cite] {
+h1.cite {
     word-spacing: 5px;
     font-size: x-large;
     margin-bottom: 5%;
@@ -438,8 +452,8 @@ h1[cite] {
     color: #444;
 }
 
-article[blog] {
-    border-radius: 8px;
+article.blog {
+    border-radius: 10px;
     border: 1px solid #f2f2f2;
     gap: 16px;
     display: flex;
@@ -450,18 +464,18 @@ article[blog] {
     margin-bottom: 10px;
 }
 
-header[blog] {
+header.blog {
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: content;
     position: relative;
 }
 
-h3[blog] {
+h3.blog {
     font-weight: 500;
 }
 
-article[blog] a[blog] {
+article.blog a.blog {
     margin-bottom: 8px;
     font-weight: 600;
     line-height: 1.5;
@@ -469,27 +483,27 @@ article[blog] a[blog] {
     width: fit-content;
 }
 
-article[blog] a[blog]:hover {
+article.blog a.blog:hover {
     color: #4183c4;
 }
 
-p[blog] {
+p.blog {
     font-size: medium;
     margin-bottom: 5px;
 }
 
-article[blog] p[blog] {
+article.blog p.blog {
     font-size: medium;
     margin-bottom: 4px;
 }
 
-a[read] {
+a.read {
     color: #4183c4;
     font-size: medium;
     width: fit-content;
 }
 
-#blog-categories nav a {
+.blog-categories nav a {
     margin-right: 10px;
     color: #4183c4;
     cursor: pointer;
@@ -501,58 +515,57 @@ a[read] {
     color: #444;
 }
 
-h2[blog] {
+h2.blog {
     font-weight: bolder;
     font-size: x-large;
     text-decoration: underline;
     margin-top: 5%;
 }
 
-h2[template] {
+h2.template {
     margin-top: 2%;
     font-weight: bolder;
     font-size: xx-large;
 }
 
-p[topic_date] {
+p.topic_date {
     margin-top: 2%;
     font-size: medium;
     color: #000;
 }
 
-p[template] {
+p.template {
     font-size: medium;
     margin-top: 10%;
     margin-bottom: 5%;
 }
 
-h1[template] {
+h1.template {
     padding-top: 5%;
     font-size: large;
     color: #444;
 }
 
-section[template] {
+section.template {
     max-width: 700px;
     margin: 0 auto 48px;
 }
 
 @media (width <=700px) {
-    section[template] {
+    section.template {
         margin-bottom: 38px;
     }
 }
 
-nav[blog] {
+nav.blog {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 10px;
     font-size: small;
 }
 
-[blog] button,
-[topic_date] button {
+button.blog {
     border-radius: 6px;
     background: #eee;
     color: #444;
@@ -565,27 +578,27 @@ nav[blog] {
     cursor: pointer;
 }
 
-[blog] button:hover,
-[topic_date] button:hover,
-[blog] button.active,
-[topic_date] button.active {
+button.blog:hover,
+button.topic_date:hover,
+button.blog.active,
+button.topic_date.active {
     transform: scale(1.1);
 }
 
-[blog] button.active,
-[topic_date] button.active {
+button.blog.active,
+button.topic_date.active {
     transform: scale(1.1);
     background-color: #d8d8d8;
 }
 
-[template] img {
+img.template {
     padding-top: 5%;
     width: 500px;
     display: block;
     margin: auto;
 }
 
-p[caption] {
+p.caption {
     font-size: medium;
     margin-bottom: 5%;
     display: block;
@@ -594,11 +607,11 @@ p[caption] {
     text-align: center;
 }
 
-[template] a {
+a.template {
     color: #4183c4;
 }
 
-[template] hr {
+hr.template {
     display: block;
     unicode-bidi: isolate;
     margin-block-start: 0.5em;
@@ -613,51 +626,51 @@ p[caption] {
 
 /* -------------------------- ABOUT -------------------------- */
 
-ul[work] {
+ul.work {
     display: flex;
     flex-direction: column;
     gap: 32px;
 }
 
-article[work] h3[work] {
+h3.work {
     font-weight: 500;
     color: #111;
 }
 
-article[work] a[work] {
+article.work a.work {
     color: #111;
 }
 
-article[work] a[work]:hover {
+article.work a.work:hover {
     text-decoration: underline;
 }
 
-article[work] h4[work] {
+h4.work {
     color: #222;
     font-weight: 400;
 }
 
-header[work] {
+header.work {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 4px;
 }
 
-time[work] {
+time.work {
     color: #555;
     font-size: medium;
     min-width: 102px;
     cursor: default;
 }
 
-[work][data-title]:hover:after {
+.work.data-title:hover:after {
     opacity: 1;
     transition: all 0.1s ease-in-out 0.5s;
     visibility: visible;
 }
 
-[work][data-title]:after {
+.work.data-title:after {
     content: attr(data-title);
     background-color: #333;
     color: #fff;
@@ -681,54 +694,54 @@ time[work] {
     border-radius: 6px;
 }
 
-[work][data-title] {
+.work.data-title {
     position: relative;
 }
 
 @media (width <=700px) {
-    time[work] {
+    time.work {
         text-align: right;
     }
 }
 
-ul[education] {
+ul.education {
     display: flex;
     flex-direction: column;
     gap: 32px;
 }
 
-article[education] h3[education] {
+article.education h3.education {
     font-weight: 500;
     color: #111;
 }
 
-header[education] {
+header.education {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 4px;
 }
 
-time[education] {
+time.education {
     color: #555;
     font-size: medium;
     min-width: 102px;
 }
 
 @media (width <=700px) {
-    time[education] {
+    time.education {
         text-align: right;
     }
 }
 
-ul[foot] {
+ul.foot {
     padding-bottom: 5%;
     display: inline-flex;
     gap: 15px;
     flex-wrap: wrap;
 }
 
-li[skills] {
+li.skills {
     align-items: center;
     background: #eee;
     border-radius: 6px;
@@ -742,7 +755,7 @@ li[skills] {
 
 /* -------------------------- CATEGORIES -------------------------- */
 
-article[class] {
+article.class {
     border-radius: 8px;
     border: 1px solid #f2f2f2;
     gap: 16px;
@@ -754,33 +767,33 @@ article[class] {
     margin-bottom: 4px;
 }
 
-header[class] {
+header.class {
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: content;
     position: relative;
 }
 
-h3[class] {
+h3.class {
     font-weight: 500;
 }
 
-article[class] a[class] {
-    color: #111
+article.class a.class {
+    color: #111;
 }
 
-article[class] a[pres] a[class]:hover {
-    text-decoration: underline
+article.class] a.pres a.class:hover {
+    text-decoration: underline;
 }
 
-p[class] {
+p.class {
     font-size: medium;
-    margin-bottom: 8px
+    margin-bottom: 8px;
 }
 
-article[class] p[class] {
+article.class p.class {
     font-size: medium;
-    margin-bottom: 4px
+    margin-bottom: 4px;
 }
 
 footer[class] {
@@ -797,7 +810,7 @@ footer[class] span[class] {
     color: #444;
     font-size: small;
     font-weight: 500;
-    padding: .2rem .6rem;
+    padding: 0.2rem 0.6rem;
     text-align: center;
     width: 100%;
 }

@@ -1,12 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const skills = {
+    nameSkills: ["C++", "C#", "SQL", "Java", "Web Dev", "PHP", "After Effects"],
+    imageSkills: [
+        "assets/c++.svg",
+        "assets/csharp.svg",
+        "assets/sql.svg",
+        "assets/java.svg",
+        "assets/webdev.svg",
+        "assets/php.svg",
+        "assets/ae.svg",
+    ],
+};
 ---
 
 <Layout pageTitle="About">
     <div id="content">
-        <section id="about" style="display: block">
-            <section main>
-                <h2 main>About me</h2>
+        <section id="about">
+            <section class="main">
+                <h2 class="main">About me</h2>
                 <p>
                     I am a 20 year old student located in Italy, currently
                     undergraduate in Computer Science. My interests are mainly
@@ -19,29 +32,29 @@ import Layout from "../layouts/Layout.astro";
                     too.
                 </p>
             </section>
-            <section main>
-                <h2 main>Work Experience</h2>
-                <ul work>
-                    <li work>
-                        <article work>
-                            <header work>
-                                <div work>
-                                    <h3 work>Freelance</h3>
-                                    <h4 work>Computer Science Tutor</h4>
+            <section class="main">
+                <h2 class="main">Work Experience</h2>
+                <ul class="work">
+                    <li class="work">
+                        <article class="work">
+                            <header class="work">
+                                <div class="work">
+                                    <h3 class="work">Freelance</h3>
+                                    <h4 class="work">Computer Science Tutor</h4>
                                 </div>
-                                <div work>
+                                <div class="work">
                                     <time
                                         datetime="2023-12-01"
                                         data-title="2023-12-01"
-                                        work
+                                        class="work"
                                         >December 2023
                                     </time>
                                     -
-                                    <time work>Present</time>
+                                    <time class="work">Present</time>
                                 </div>
                             </header>
-                            <footer work>
-                                <p work>
+                            <footer class="work">
+                                <p class="work">
                                     Thanks to one of my old professor in High
                                     School, I was able to contact some students
                                     that needed for help in Computer Science.
@@ -55,21 +68,21 @@ import Layout from "../layouts/Layout.astro";
                             </footer>
                         </article>
                     </li>
-                    <li work>
-                        <article work>
-                            <header work>
-                                <div work>
-                                    <h3 work>La Piadineria</h3>
-                                    <h4 work>Employee</h4>
+                    <li class="work">
+                        <article class="work">
+                            <header class="work">
+                                <div class="work">
+                                    <h3 class="work">La Piadineria</h3>
+                                    <h4 class="work">Employee</h4>
                                 </div>
-                                <div work>
-                                    <time work>September 2023 </time>
+                                <div class="work">
+                                    <time class="work">September 2023 </time>
                                     -
-                                    <time work>December 2023</time>
+                                    <time class="work">December 2023</time>
                                 </div>
                             </header>
-                            <footer work>
-                                <p work>
+                            <footer class="work">
+                                <p class="work">
                                     Training experience where I decided to throw
                                     myself into a completely new environment and
                                     sector. Although the experience was short,
@@ -82,23 +95,23 @@ import Layout from "../layouts/Layout.astro";
                             </footer>
                         </article>
                     </li>
-                    <li work>
-                        <article work>
-                            <header work>
-                                <div work>
-                                    <h3 work>
+                    <li class="work">
+                        <article class="work">
+                            <header class="work">
+                                <div class="work">
+                                    <h3 class="work">
                                         Weevo: Digital Corporate Communication
                                     </h3>
-                                    <h4 work>Internship</h4>
+                                    <h4 class="work">Internship</h4>
                                 </div>
-                                <div work>
-                                    <time work>January 2022 </time>
+                                <div class="work">
+                                    <time class="work">January 2022 </time>
                                     -
-                                    <time work>February 2022</time>
+                                    <time class="work">February 2022</time>
                                 </div>
                             </header>
-                            <footer work>
-                                <p work>
+                            <footer class="work">
+                                <p class="work">
                                     This period of intership helped me to
                                     develop some copywriting skills together
                                     with some usage of CMS such as Drupal. It
@@ -110,40 +123,44 @@ import Layout from "../layouts/Layout.astro";
                     </li>
                 </ul>
             </section>
-            <section main>
-                <h2 main>Education</h2>
-                <ul education>
-                    <li education>
-                        <article education>
-                            <header education>
-                                <div education>
-                                    <h3 education>University of Verona</h3>
+            <section class="main">
+                <h2 class="main">Education</h2>
+                <ul class="education">
+                    <li class="education">
+                        <article class="education">
+                            <header class="education">
+                                <div class="education">
+                                    <h3 class="education">
+                                        University of Verona
+                                    </h3>
                                 </div>
-                                <div education>
-                                    <time education>2023</time> -
-                                    <time education>Present</time>
+                                <div class="education">
+                                    <time class="education">2023</time> -
+                                    <time class="education">Present</time>
                                 </div>
                             </header>
-                            <footer education>
-                                <p education>
+                            <footer class="education">
+                                <p class="education">
                                     BS in Computer Science, still undergraduate.
                                 </p>
                             </footer>
                         </article>
                     </li>
-                    <li education>
-                        <article education>
-                            <header education>
-                                <div education>
-                                    <h3 education>ITIS Luigi Cerebotani</h3>
+                    <li class="education">
+                        <article class="education">
+                            <header class="education">
+                                <div class="education">
+                                    <h3 class="education">
+                                        ITIS Luigi Cerebotani
+                                    </h3>
                                 </div>
-                                <div education>
-                                    <time education>2018</time> -
-                                    <time education>2023</time>
+                                <div class="education">
+                                    <time class="education">2018</time> -
+                                    <time class="education">2023</time>
                                 </div>
                             </header>
-                            <footer education>
-                                <p education>
+                            <footer class="education">
+                                <p class="education">
                                     High school with specialization in
                                     Information Technology. Got out of this
                                     school with a 100/100 graduation mark and
@@ -154,37 +171,21 @@ import Layout from "../layouts/Layout.astro";
                     </li>
                 </ul>
             </section>
-            <section main>
-                <h2 main>Skills</h2>
-                <ul foot>
-                    <li skills>
-                        <img src="assets/c++.svg" width="16" height="16" />
-                        <span skills>C++</span>
-                    </li>
-                    <li skills>
-                        <img src="assets/csharp.svg" width="16" height="16" />
-                        <span skills>C#</span>
-                    </li>
-                    <li skills>
-                        <img src="assets/sql.svg" width="16" height="16" />
-                        <span skills>SQL</span>
-                    </li>
-                    <li skills>
-                        <img src="assets/java.svg" width="16" height="16" />
-                        <span skills>Java</span>
-                    </li>
-                    <li skills>
-                        <img src="assets/webdev.svg" width="16" height="16" />
-                        <span skills>Web Dev</span>
-                    </li>
-                    <li skills>
-                        <img src="assets/php.svg" width="16" height="16" />
-                        <span skills>PHP</span>
-                    </li>
-                    <li skills>
-                        <img src="assets/ae.svg" width="16" height="16" />
-                        <span skills>After Effects</span>
-                    </li>
+            <section class="main">
+                <h2 class="main">Skills</h2>
+                <ul class="foot">
+                    {
+                        skills.nameSkills.map((skill, index) => (
+                            <li class="skills">
+                                <img
+                                    src={skills.imageSkills[index]}
+                                    width="16"
+                                    height="16"
+                                />
+                                <span class="skills">{skill}</span>
+                            </li>
+                        ))
+                    }
                 </ul>
             </section>
         </section>
