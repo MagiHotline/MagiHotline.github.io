@@ -1,16 +1,16 @@
 ---
-import BaseLayout from "./Layout.astro";
+import ThemeIcon from "../components/ThemeIcon.astro";
+import "../styles/stylesheet.css";
 const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout>
-    <h1>{frontmatter.title}</h1>
-    <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
-    <p><em>{frontmatter.description}</em></p>
-    <p>Written by: {frontmatter.author}</p>
-    <slot />
-    <a href="../blog" class="read">Back to blog</a>
-</BaseLayout>
+<h1>{frontmatter.title}</h1><ThemeIcon />
+<p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
+<p><em>{frontmatter.description}</em></p>
+<p>Written by: {frontmatter.author}</p>
+
+<slot />
+<a href="../blog" class="read">Back to blog</a>
 <style>
     html {
         background-color: #f1f5f9;

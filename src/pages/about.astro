@@ -1,17 +1,17 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import CPlus from "../assets/c++.svg";
+import CSharp from "../assets/csharp.svg";
+import Sql from "../assets/sql.svg";
+import Java from "../assets/java.svg";
+import Webdev from "../assets/webdev.svg";
+import Php from "../assets/php.svg";
+import Ae from "../assets/ae.svg";
 
 const skills = {
     nameSkills: ["C++", "C#", "SQL", "Java", "Web Dev", "PHP", "After Effects"],
-    imageSkills: [
-        "/src/assets/c++.svg",
-        "/src/assets/csharp.svg",
-        "/src/assets/sql.svg",
-        "/src/assets/java.svg",
-        "/src/assets/webdev.svg",
-        "/src/assets/php.svg",
-        "/src/assets/ae.svg",
-    ],
+    imageSkills: [CPlus, CSharp, Sql, Java, Webdev, Php, Ae],
 };
 ---
 
@@ -177,12 +177,13 @@ const skills = {
                     {
                         skills.nameSkills.map((skill, index) => (
                             <li class="skills">
-                                <img
+                                <Image
                                     src={skills.imageSkills[index]}
                                     width="16"
                                     height="16"
+                                    alt="ImageSkills"
                                 />
-                                <span class="skills">{skill}</span>
+                                <span class="skills">s{skill}</span>
                             </li>
                         ))
                     }
