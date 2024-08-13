@@ -12,39 +12,3 @@ const { frontmatter } = Astro.props;
 
 <slot />
 <a href="/../blog" class="read">Back to blog</a>
-<style>
-    html {
-        background-color: #f1f5f9;
-        font-family: sans-serif;
-    }
-
-    html.dark {
-        background-color: #1c1a1a;
-        color: #fff;
-    }
-
-    .dark .nav-links a {
-        color: #fff;
-    }
-
-    body {
-        margin: 0 auto;
-        width: 100%;
-        max-width: 80ch;
-        padding: 1rem;
-        line-height: 1.5;
-    }
-
-    * {
-        box-sizing: border-box;
-    }
-
-    h1 {
-        margin: 1rem 0;
-        font-size: 2.5rem;
-    }
-
-    p {
-        margin: 1rem 0;
-    }
-</style>
