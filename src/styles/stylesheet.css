@@ -12,6 +12,28 @@ html {
     overflow-x: hidden;
 }
 
+html.dark {
+    background-color: #1c1a1a;
+    color: #fff;
+}
+
+.dark a,
+.dark body,
+.dark span.header,
+.dark p,
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark .entry p {
+    color: #fff;
+}
+
+.dark h3.work,
+.dark h4.work {
+    color: #c8bfbf;
+}
+
 a {
     text-decoration: none;
 }
@@ -131,6 +153,10 @@ h2.header {
     font-weight: 500;
     font-size: large;
     text-wrap: balance;
+}
+
+.dark h2.header {
+    color: #fff;
 }
 
 img.header {
@@ -708,6 +734,10 @@ ul.education {
     display: flex;
     flex-direction: column;
     gap: 32px;
+}
+
+.dark .education h3.education {
+    color: #c8bfbf;
 }
 
 article.education h3.education {

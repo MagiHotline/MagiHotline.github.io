@@ -2,6 +2,7 @@
 import Nav from "../components/Nav.astro";
 import Header from "../components/Header.astro";
 import "../styles/stylesheet.css";
+import ThemeIcon from "../components/ThemeIcon.astro";
 ---
 
 <!doctype html>
@@ -13,12 +14,13 @@ import "../styles/stylesheet.css";
             content="Paolo Imbriani - CS Student @ UNIVR, future researcher in the Computer Science Theory"
         />
         <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="images/icon.png" />
+        <link rel="icon" type="image/svg+xml" href="../../assets/icon.png" />
         <title>Paolo Imbriani</title>
     </head>
     <body>
         <Header />
         <Nav />
+        <ThemeIcon />
         <slot />
     </body>
 </html>
