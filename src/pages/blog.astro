@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 const pageTitle = "Blog";
-
+import "../styles/stylesheet.css";
 const posts = await Astro.glob("./posts/*.md");
 ---
 
@@ -20,7 +20,11 @@ const posts = await Astro.glob("./posts/*.md");
                     <button class="blog"> Nerdy </button>
                 </nav>
                 <div id="postsContainer">
-                { posts.map(post =>
+                { posts
+                  // Sorts posts by date
+                  .sort((a, b) => new Date(b.frontmatter.pubDate).getTime() - (new Date(a.frontmatter.pubDate)).getTime())
+                  // Maps over each post
+                  .map(post =>
                     <div id="misc250524">
                         <article class="blog">
                             <a href={post.url} class="blog">{post.frontmatter.title}</a
@@ -28,29 +32,12 @@ const posts = await Astro.glob("./posts/*.md");
                             <div class="date">Written on {post.frontmatter.pubDate.toString().slice(0, 10)}</div>
                             <div class="entry">
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Praesent sodales eget
-                                    turpis sed mollis. Ut venenatis egestas
-                                    finibus. Sed sed placerat justo. Maecenas
-                                    cursus cursus urna, sed volutpat nibh
-                                    consectetur sed. Nam libero nisl, tristique
-                                    a consectetur et, ultricies non felis. Fusce
-                                    egestas ligula id nulla mollis feugiat.
-                                    Fusce tincidunt ex augue, non rhoncus sapien
-                                    porttitor at. Vestibulum facilisis eget eros
-                                    non pretium. Sed non lorem vitae urna auctor
-                                    commodo. Suspendisse id justo volutpat,
-                                    eleifend urna at, fermentum dolor. Vivamus
-                                    pulvinar lacinia massa ut pretium. Nunc
-                                    bibendum interdum tellus ut pharetra. Class
-                                    aptent taciti sociosqu ad litora torquent
-                                    per conubia nostra, per inceptos himenaeos.
+                                    {post.frontmatter.description}
                                 </p>
                             </div>
-                            <a href="/posts/post1" class="read">read more</a>
+                            <a href={post.url} class="read">read more</a>
                         </article>
                     </div>
-
                     <!-- COMPUTER SCIENCE POST -->
                     <div id="cs"></div>
                     <!-- MATH POST -->

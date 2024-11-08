@@ -1,0 +1,51 @@
+---
+const text = "WORK IN PROGRESS! This site is under development!";
+---
+
+<style>
+
+
+    .dark .banner-container {
+        width: 100%;
+        overflow: hidden;
+        background-color: #333;
+        color: white;
+        padding: 10px 0;
+        position: relative;
+    }
+
+    .banner-container {
+        width: 100%;
+        overflow: hidden;
+        background-color: #fff;
+        color: white;
+        padding: 10px 0;
+        border-radius: 3%;
+        border-color: #000;
+        position: relative;
+    }
+
+    .banner-text {
+        display: inline-block;
+        /*white-space: nowrap;*/
+        position: center;
+        font-family: monospace;
+        font-size: 20px;
+        will-change: transform;
+        color: #333;
+        animation: scroll-left 10s linear infinite;
+    }
+
+    @keyframes scroll-left {
+        from {
+            transform: translateX(1450px);
+        }
+        to {
+            transform: translateX(-550px);
+        }
+    }
+</style>
+
+<div class="banner-container">
+    <div class="banner-text">{text}</div>
+</div>

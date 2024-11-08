@@ -1,0 +1,56 @@
+---
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Image } from 'astro:assets';
+import Gatsby from "../assets/The_Great_Gatsby_Cover_1925_Retouched.jpg";
+import DragonCrown from "../assets/cover_dragon.jpg";
+import Metamorphosis from "../assets/Metamorfosi.jpg";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
+import { Pagination, Autoplay } from 'swiper/modules';
+
+const books = [
+  {
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    image: Gatsby,
+    review: "The Great Gatsby explains perfectly how it does not matter how rich you may are, if you are alone you are the poorest of man. I loved Fitzgerald style while reading this, the suspense and mistery there’s while reading kept my interest in the narration allowing a good flow of the story. All the characters have distinct personalities and have good developing throughout the story. The descriptions are very well done, not boring and always with a meaning. Exceptional reading!",
+  },
+  {
+    title: "The Dragon's Crown",
+    author: "Uri Orlev",
+    image: DragonCrown,
+    review: "The Dragon's Crown by Uri Orlev is a captivating, emotional read. The blend of war-torn reality and fantasy keeps you engaged, while the simple, heartfelt writing makes the heavy themes accessible. It feels immersive, touching, and deeply moving, balancing hope with the harshness of wartime.",
+  },
+  {
+    title: "Metamorphosis",
+    author: "Franz Kafka",
+    image: Metamorphosis,
+    review: "Kafka's Metamorphosis is a haunting, thought-provoking read. Its surreal premise pulls you in immediately, and the writing is both unsettling and absorbing. The story’s strange, dreamlike atmosphere makes you reflect on isolation, alienation, and identity, leaving a lasting emotional impact. It’s disturbing yet deeply insightful.",
+  },
+];
+---
+
+
+<div class="my-swiper">
+<Swiper
+    modules={[Pagination, Autoplay]}
+    spaceBetween={50}
+    slidesPerView={1}
+    loop={true}
+    pagination={{ clickable: true }}
+    autoplay={{ delay: 3000 }}
+>
+    {books.map((book) => (
+    <SwiperSlide>
+        <div class="book-card">
+        <Image src={book.image} alt={`Cover of ${book.title}`} />
+        <h3 class="book-title">{book.title}</h3>
+        <p class="book-author">{book.author}</p>
+        <p class="book-review">{book.review}</p>
+        </div>
+    </SwiperSlide>
+    ))}
+</Swiper>
+</div>
+</>

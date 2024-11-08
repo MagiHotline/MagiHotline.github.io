@@ -7,10 +7,20 @@ const { frontmatter } = Astro.props;
 <h1>{frontmatter.title}</h1>
 <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
 <p><em>{frontmatter.description}</em></p>
-<p>Written by: {frontmatter.author}</p>
 <slot />
 <a href="/../blog" class="read">Back to blog</a>
-<style>
+<style is:global>
+
+    a.read {
+        color: #4183c4;
+        font-size: medium;
+        width: fit-content;
+    }
+
+    p {
+        margin: 1rem 0;
+    }
+
     html {
         font-family:
             Menlo,
@@ -50,6 +60,34 @@ const { frontmatter } = Astro.props;
         margin: 1rem 0;
         font-size: 2.5rem;
     }
+
+    h3 {
+        margin: 1rem 0;
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        margin: 1rem 0;
+        font-size: 2rem;
+    }
+
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Ensure ordered lists have default styling */
+    ol {
+        list-style-type: decimal; /* Use numbers for ordered lists */
+        margin-left: 20px;        /* Add some indentation */
+        padding-left: 20px;       /* Add some padding for readability */
+    }
+
+    li {
+        margin-bottom: 8px;       /* Add spacing between list items */
+    }
+
+
 
     a.read {
         color: #4183c4;
