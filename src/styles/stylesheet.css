@@ -829,7 +829,6 @@ footer[class] span[class] {
 
 /* Ensure Swiper container takes full width and is centered */
 .my-swiper {
-  width: 100%;
   max-width: 90%;
   margin: 0 auto;
   padding: 1rem 0;
@@ -847,7 +846,7 @@ div.book-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #fffff;
+  background: #ffff;
   padding: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
