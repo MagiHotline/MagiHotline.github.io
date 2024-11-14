@@ -2,10 +2,6 @@
 import { Image } from "astro:assets";
 import Location from "../assets/location-icon.svg"; // Image is 1600x900
 import MyImage from "../assets/me.png";
-import Email from "../assets/email.png";
-import Instagram from "../assets/instagram.jpeg";
-import Linkedin from "../assets/linkedin.jpeg";
-import Github from "../assets/github.jpeg";
 ---
 
 <header class="top">
@@ -17,12 +13,6 @@ import Github from "../assets/github.jpeg";
                     Computer Science Student @ UNIVR, Aspiring Researcher
                 </h2>
                 <span class="header">
-                    <Image
-                        src={Location}
-                        alt="location"
-                        width="20"
-                        height="20"
-                    />
                     Mantova, Lombardia, Italy
                 </span>
                 <footer class="header">
@@ -33,7 +23,7 @@ import Github from "../assets/github.jpeg";
                         rel="noopener noreferrer"
                         class="header"
                     >
-                        <Image src={Email} alt="email" />
+                       Email
                     </a>
                     <a
                         href="https://www.instagram.com/magidoof77/"
@@ -42,12 +32,7 @@ import Github from "../assets/github.jpeg";
                         rel="noopener noreferrer"
                         class="header"
                     >
-                        <Image
-                            src={Instagram}
-                            height="20"
-                            alt="Instagram"
-                            width="20"
-                        />
+                        Instagram
                     </a>
                     <a
                         href="https://www.linkedin.com/in/paolo-imbriani-ba1b7b215/"
@@ -56,12 +41,7 @@ import Github from "../assets/github.jpeg";
                         rel="noopener noreferrer"
                         class="header"
                     >
-                        <Image
-                            src={Linkedin}
-                            height="20"
-                            width="20"
-                            alt="linkedin"
-                        />
+                        Linkedin
                     </a>
                     <a
                         href="https://github.com/MagiHotline"
@@ -70,12 +50,7 @@ import Github from "../assets/github.jpeg";
                         rel="noopener noreferrer"
                         class="header"
                     >
-                        <Image
-                            src={Github}
-                            alt="github"
-                            width="20"
-                            height="20"
-                        />
+                        Github
                     </a>
                 </footer>
             </div>
