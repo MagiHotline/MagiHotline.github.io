@@ -1,0 +1,61 @@
+---
+---
+<div id="typewriter">
+  magi<span id="completion"></span>
+</div>
+
+<script>
+const completions = ["ware", "doof", "productions", "hotline", "design",
+    "creations", "games", "studio", "press"];
+  let currentIndex = 0;
+  const completionSpan = document.getElementById('completion');
+
+  function typeWriter(text, i, callback) {
+    if (i < text.length) {
+      completionSpan.innerHTML = text.substring(0, i + 1);
+      setTimeout(() => {
+        typeWriter(text, i + 1, callback);
+      }, 100);
+    } else {
+      setTimeout(callback, 2000);
+    }
+  }
+
+  function eraseWriter(text, i, callback) {
+    if (i >= 0) {
+      completionSpan.innerHTML = text.substring(0, i);
+      setTimeout(() => {
+        eraseWriter(text, i - 1, callback);
+      }, 50);
+    } else {
+      callback();
+    }
+  }
+
+  function startTypeWriter() {
+    const text = completions[currentIndex];
+    typeWriter(text, 0, () => {
+      eraseWriter(text, text.length, () => {
+        currentIndex = (currentIndex + 1) % completions.length;
+        startTypeWriter();
+      });
+    });
+  }
+
+  startTypeWriter();
+</script>
+<style>
+  #typewriter {
+    font-family: 'Menlo', Courier, monospace;
+    font-size: 2.5rem;
+    color: #333;
+    margin-top: 30px;
+    padding: 20px;
+    width: fit-content;
+  }
+
+    /* Dark Theme */
+    :global(.dark) #typewriter {
+        color: white;
+    }
+</style>
