@@ -3,106 +3,103 @@ import ThemeIcon from "../components/ThemeIcon.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<ThemeIcon />
-<head>
-  <script>
-  // @ts-nocheck
-    window.MathJax = {
-      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-      svg: { fontCache: 'global' }
-    };
-  </script>
-  <script async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-</head>
-<h1>{frontmatter.title}</h1>
-<p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
-<p><em>{frontmatter.description}</em></p>
-<slot />
-<a href="/../blog" class="read">Back to blog</a>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{frontmatter.title}</title>
+    <meta name="description" content={frontmatter.description} />
+    <script>
+      // @ts-nocheck
+      window.MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <ThemeIcon />
+    <h1>{frontmatter.title}</h1>
+    <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
+    <p><em>{frontmatter.description}</em></p>
+    <slot />
+    <a href="/../blog" class="read">Back to blog</a>
+  </body>
+</html>
+
 <style is:global>
+  a.read {
+    color: #4183c4;
+    font-size: medium;
+    width: fit-content;
+  }
 
-    a.read {
-        color: #4183c4;
-        font-size: medium;
-        width: fit-content;
-    }
+  p {
+    margin: 1rem 0;
+  }
 
-    p {
-        margin: 1rem 0;
-    }
+  html {
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Courier New,
+      Courier,
+      monospace;
+    background: #fff;
+    letter-spacing: -0.025rem;
+    overflow-x: hidden;
+  }
 
-    html {
-        font-family:
-            Menlo,
-            Monaco,
-            Lucida Console,
-            Courier New,
-            Courier,
-            monospace;
-        background: #fff;
-        /* White */
-        letter-spacing: -0.025rem;
-        overflow-x: hidden;
-    }
+  html.dark {
+    background-color: #1c1a1a;
+    color: #fff;
+  }
 
-    html.dark {
-        background-color: #1c1a1a;
-        color: #fff;
-    }
+  .dark .nav-links a {
+    color: #fff;
+  }
 
-    .dark .nav-links a {
-        color: #fff;
-    }
+  body {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 80ch;
+    padding: 1rem;
+    line-height: 1.5;
+  }
 
-    body {
-        margin: 0 auto;
-        width: 100%;
-        max-width: 80ch;
-        padding: 1rem;
-        line-height: 1.5;
-    }
+  * {
+    box-sizing: border-box;
+  }
 
-    * {
-        box-sizing: border-box;
-    }
+  h1 {
+    margin: 1rem 0;
+    font-size: 2.5rem;
+  }
 
-    h1 {
-        margin: 1rem 0;
-        font-size: 2.5rem;
-    }
+  h3 {
+    margin: 1rem 0;
+    font-size: 1.5rem;
+  }
 
-    h3 {
-        margin: 1rem 0;
-        font-size: 1.5rem;
-    }
+  h2 {
+    margin: 1rem 0;
+    font-size: 2rem;
+  }
 
-    h2 {
-        margin: 1rem 0;
-        font-size: 2rem;
-    }
+  ul {
+    padding: 0;
+    margin: 0;
+  }
 
-    ul {
-        padding: 0;
-        margin: 0;
-    }
+  ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+    padding-left: 20px;
+  }
 
-    /* Ensure ordered lists have default styling */
-    ol {
-        list-style-type: decimal; /* Use numbers for ordered lists */
-        margin-left: 20px;        /* Add some indentation */
-        padding-left: 20px;       /* Add some padding for readability */
-    }
-
-    li {
-        margin-bottom: 8px;       /* Add spacing between list items */
-    }
-
-
-    a.read {
-        color: #4183c4;
-        font-size: medium;
-        width: fit-content;
-    }
-
+  li {
+    margin-bottom: 8px;
+  }
 </style>
