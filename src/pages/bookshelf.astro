@@ -1,14 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Images
 import { Image } from 'astro:assets';
 import Gatsby from "../assets/The_Great_Gatsby_Cover_1925_Retouched.jpg";
 import DragonCrown from "../assets/cover_dragon.jpg";
 import Metamorphosis from "../assets/Metamorfosi.jpg";
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
-import { Pagination, Autoplay } from 'swiper/modules';
 
 const books = [
   {
@@ -33,25 +30,150 @@ const books = [
 ---
 
 <Layout pageTitle="Bookshelf">
-    <div class="my-swiper">
-        <Swiper
-            modules={[Pagination, Autoplay]}
-            spaceBetween={50}
-            slidesPerView={1}
-            loop={true}
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 3000 }}
-        >
-            {books.map((book) => (
-            <SwiperSlide>
-                <div class="book-card">
-                <Image src={book.image} alt={`Cover of ${book.title}`} />
+    <script>
+      import { register } from 'swiper/element/bundle';
+      register();
+    </script>
+
+    <div class="bookshelf-wrapper">
+      <swiper-container
+        slides-per-view="1"
+        space-between="30"
+        loop="true"
+        centered-slides="true"
+        pagination="true"
+        navigation="true"
+        autoplay-delay="5000"
+        autoplay-disable-on-interaction="true"
+        class="my-swiper"
+      >
+        {books.map((book) => (
+          <swiper-slide>
+            <div class="book-card">
+              <div class="book-cover-wrapper">
+                 <Image src={book.image} alt={`Cover of ${book.title}`} class="book-cover"/>
+              </div>
+              <div class="book-info">
                 <h3 class="book-title">{book.title}</h3>
                 <p class="book-author">{book.author}</p>
                 <p class="book-review">{book.review}</p>
-                </div>
-            </SwiperSlide>
-            ))}
-        </Swiper>
+              </div>
+            </div>
+          </swiper-slide>
+        ))}
+      </swiper-container>
     </div>
+
+    <style>
+      /* Wrapper */
+      .bookshelf-wrapper {
+        width: 100%;
+        max-width: 800px; /* Slightly wider to accommodate bigger images comfortably */
+        margin: 0 auto;
+        min-height: 600px;
+      }
+
+      /* Swiper Config */
+      swiper-container {
+        --swiper-theme-color: #4183c4;
+        --swiper-navigation-size: 35px; /* Bigger arrows */
+        --swiper-pagination-bottom: 0px;
+        padding-bottom: 50px;
+        width: 100%;
+      }
+
+      swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto; /* Adapts to content height */
+      }
+
+      :global(.dark) swiper-container {
+        --swiper-theme-color: #fff;
+      }
+
+      /* Card Styling */
+      .book-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #fff;
+        border: 1px solid #f2f2f2;
+        padding: 2.5rem 2rem;
+        border-radius: 16px;
+        text-align: center;
+        width: 100%;
+        max-width: 500px; /* Prevents card from getting too wide on desktop */
+        margin: 0 auto;   /* Backup centering */
+        cursor: grab;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* Subtle lift */
+      }
+
+      .book-card:active {
+        cursor: grabbing;
+      }
+
+      .book-cover-wrapper {
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        filter: drop-shadow(0 15px 25px rgba(0,0,0,0.2)); /* Deeper shadow for bigger book */
+        transition: transform 0.3s ease;
+      }
+
+      .book-cover-wrapper:hover {
+        transform: translateY(-8px) scale(1.02);
+      }
+
+      /* BIGGER IMAGE SIZE */
+      .book-cover {
+        max-width: 440px; /* Increased from 150px */
+        height: auto;
+        border-radius: 4px 8px 8px 4px;
+        display: block;
+      }
+
+      /* Typography */
+      .book-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #111;
+      }
+
+      .book-author {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 1.5rem;
+        font-style: italic;
+      }
+
+      .book-review {
+        font-size: 1rem;
+        color: #444;
+        line-height: 1.7;
+        margin: 0 auto;
+      }
+
+      /* Dark Mode Content */
+      :global(.dark) .book-card {
+        background: #1c1a1a;
+        border: 1px solid #333;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      }
+
+      :global(.dark) .book-title {
+        color: #fff;
+      }
+
+      :global(.dark) .book-author {
+        color: #bbb;
+      }
+
+      :global(.dark) .book-review {
+        color: #ddd;
+      }
+    </style>
 </Layout>

@@ -1,0 +1,188 @@
+---
+import Layout from "../layouts/Layout.astro";
+const pageTitle = "Projects";
+import "../styles/stylesheet.css";
+
+// Define your projects here, or fetch them from a collection/JSON file
+const projects = [
+  {
+    title: "University Notes",
+    description: "University notes I have taken during class for Computer Science at University of Verona",
+    url: "https://github.com/MagiHotline/UniNotes",
+    tags: ["Notes", "Latex"],
+    year: "2023 - 2026"
+  },
+  {
+    title: "Agda Formalization of Modal Logic S4.2",
+    description: "This project was developed as part of a university internship and aims" +
+    " at the implementation, in the proof assistant Agda, of a deductive system in natural deduction for modal logic S4.2.",
+    url: "https://github.com/MagiHotline/modal-logicS4.2-nd-agda",
+    tags: ["Logic", "Agda", "Proof Assistant"],
+    year: "2025"
+  },
+  {
+    title: "Diabetes Logger",
+    description: "This is a university project for an application that allows diabetes patients to log their blood sugar levels, insulin doses, and other relevant"
+    + "information; medics can then access this data to monitor their patients' health and admins can manage users and their data.",
+    url: "https://github.com/MagiHotline/diabetes_logger",
+    tags: ["Java", "Springboot", "Svelte", "Software Engineer"],
+    year: "2025"
+  }
+];
+---
+<Layout pageTitle={pageTitle}>
+    <section class="main">
+      <h2>Projects</h2>
+      <div class="projects-list">
+        {projects.map((project) => (
+          <article class="project">
+            <header class="project-header">
+              <div class="title-group">
+                <h3>
+                  <a href={project.url} target="_blank" rel="noopener noreferrer">
+                    {project.title}
+                  </a>
+                </h3>
+                <span class="year">{project.year}</span>
+              </div>
+              <a href={project.url} class="icon-link" aria-label="View Project">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up-right">
+                    <line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+            </header>
+            <p class="description">{project.description}</p>
+
+            <footer class="project-footer">
+              <ul class="foot">
+                {project.tags.map((tag) => (
+                  <li class="skills">{tag}</li>
+                ))}
+              </ul>
+            </footer>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <style>
+      /* Base styles for the project card */
+      article.project {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 20px;
+        border: 1px solid #f2f2f2;
+        border-radius: 8px;
+        margin-bottom: 24px;
+        transition: border-color 0.3s ease, transform 0.2s ease;
+        background-color: transparent;
+      }
+
+      /* Hover effect for desktop */
+      article.project:hover {
+        border-color: #ddd;
+      }
+
+      /* Header Layout */
+      .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .title-group {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .title-group h3 {
+        font-weight: 500;
+        margin: 0;
+      }
+
+      .title-group h3 a {
+        color: #111;
+        text-decoration: none;
+      }
+
+      .title-group h3 a:hover {
+        text-decoration: underline;
+      }
+
+      .year {
+        font-size: 0.85rem;
+        color: #666;
+        font-family: Menlo, Monaco, Lucida Console, monospace;
+      }
+
+      .icon-link {
+        color: #666;
+        transition: color 0.2s;
+      }
+
+      .icon-link:hover {
+        color: #4183c4;
+      }
+
+      /* Description text */
+      p.description {
+        margin: 0;
+        font-size: medium;
+        line-height: 1.6;
+        color: #444;
+      }
+
+      /* Footer/Tags spacing */
+      .project-footer {
+        margin-top: 10px;
+      }
+
+      /* DARK MODE INTEGRATION
+         (Uses html.dark logic from your global CSS)
+      */
+      :global(.dark) article.project {
+        border-color: #333;
+      }
+
+      :global(.dark) article.project:hover {
+        border-color: #555;
+      }
+
+      :global(.dark) .title-group h3 a {
+        color: #fff;
+      }
+
+      :global(.dark) p.description {
+        color: #bbb;
+      }
+
+      :global(.dark) .year,
+      :global(.dark) .icon-link {
+        color: #888;
+      }
+
+      :global(.dark) .icon-link:hover {
+        color: #fff;
+      }
+
+      /* MOBILE READJUSTMENT
+         (Matches your existing @media logic for removing borders)
+      */
+      @media (max-width: 700px) {
+        article.project {
+          border: none;
+          box-shadow: 0 1px 1px #f2f2f2;
+          padding: 0 0 16px;
+          margin-bottom: 24px;
+        }
+
+        :global(.dark) article.project {
+          box-shadow: 0 1px 1px #333;
+        }
+      }
+    </style>
+
+</Layout>
