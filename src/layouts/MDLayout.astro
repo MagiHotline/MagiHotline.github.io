@@ -25,81 +25,108 @@ const { frontmatter } = Astro.props;
     <p><em>{frontmatter.description}</em></p>
     <slot />
     <a href="/../blog" class="read">Back to blog</a>
+    <script src="https://giscus.app/client.js"
+            data-repo="MagiHotline/MagiHotline.github.io"
+            data-repo-id="R_kgDOMgECcA"
+            data-category="General"
+            data-category-id="DIC_kwDOMgECcM4C4AAj"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="top"
+            data-theme="preferred_color_scheme"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+    </script>
   </body>
 </html>
 
 <style is:global>
-  a.read {
+
+a {
+    color: #4183c4;
+}
+
+a.read {
     color: #4183c4;
     font-size: medium;
     width: fit-content;
-  }
+}
 
-  p {
+p {
     margin: 1rem 0;
-  }
+    font-size: 1.2rem;
+}
 
-  html {
+html {
     font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Courier New,
-      Courier,
-      monospace;
+        Verdana,
+        Menlo,
+        Monaco,
+        Lucida Console,
+        Courier New,
+        Courier,
+        monospace;
     background: #fff;
     letter-spacing: -0.025rem;
     overflow-x: hidden;
-  }
+}
 
-  html.dark {
+html.dark {
     background-color: #1c1a1a;
     color: #fff;
-  }
+}
 
-  .dark .nav-links a {
+.dark .nav-links a {
     color: #fff;
-  }
+}
 
-  body {
+body {
     margin: 0 auto;
     width: 100%;
-    max-width: 80ch;
+    max-width: 90ch;
     padding: 1rem;
     line-height: 1.5;
-  }
+}
 
-  * {
+* {
     box-sizing: border-box;
-  }
+}
 
-  h1 {
-    margin: 1rem 0;
-    font-size: 2.5rem;
-  }
-
-  h3 {
-    margin: 1rem 0;
-    font-size: 1.5rem;
-  }
-
-  h2 {
+h1 {
     margin: 1rem 0;
     font-size: 2rem;
-  }
+}
 
-  ul {
-    padding: 0;
-    margin: 0;
-  }
+h3 {
+    margin: 1rem 0;
+    font-size: 1rem;
+}
 
-  ol {
+h2 {
+    margin: 1rem 0;
+    font-size: 1.5rem;
+}
+
+ul, ol {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+}
+
+ul {
+    list-style-type: disc;
+}
+
+ol {
     list-style-type: decimal;
-    margin-left: 20px;
-    padding-left: 20px;
-  }
+}
 
-  li {
-    margin-bottom: 8px;
-  }
+li {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
 </style>
