@@ -25,22 +25,6 @@ const { frontmatter } = Astro.props;
     <p><em>{frontmatter.description}</em></p>
     <slot />
     <a href="/../blog" class="read">Back to blog</a>
-    <script src="https://giscus.app/client.js"
-            data-repo="MagiHotline/MagiHotline.github.io"
-            data-repo-id="R_kgDOMgECcA"
-            data-category="General"
-            data-category-id="DIC_kwDOMgECcM4C4AAj"
-            data-mapping="pathname"
-            data-strict="0"
-            data-reactions-enabled="1"
-            data-emit-metadata="1"
-            data-input-position="top"
-            data-theme="preferred_color_scheme"
-            data-lang="en"
-            data-loading="lazy"
-            crossorigin="anonymous"
-            async>
-    </script>
   </body>
 </html>
 
@@ -112,8 +96,9 @@ h2 {
 }
 
 ul, ol {
-    margin: 1.5rem 0;
+    margin: 1rem 0;
     padding-left: 2rem;
+    font-size: 1rem;
 }
 
 ul {
@@ -124,9 +109,28 @@ ol {
     list-style-type: decimal;
 }
 
+ul ul {
+  margin: 0.5rem 0 0.5rem 1.5rem;
+  list-style-type: circle;
+}
+
+ol ol {
+    margin: 0.5rem 0 0.5rem 1.5rem;
+    list-style-type: decimal;
+}
+
 li {
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
     line-height: 1.6;
 }
+
+blockquote {
+  padding: 0 1em;
+  color: #5CB685;
+  border-left: 0.25em solid #d0d7de;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
 </style>
