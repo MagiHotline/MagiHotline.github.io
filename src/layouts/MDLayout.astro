@@ -1,5 +1,8 @@
 ---
+import Header from "../components/Header.astro";
+import Nav from "../components/Nav.astro";
 import ThemeIcon from "../components/ThemeIcon.astro";
+import "../styles/stylesheet.css";
 const { frontmatter } = Astro.props;
 ---
 
@@ -20,11 +23,15 @@ const { frontmatter } = Astro.props;
   </head>
   <body>
     <ThemeIcon />
-    <h1>{frontmatter.title}</h1>
-    <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
-    <p><em>{frontmatter.description}</em></p>
-    <slot />
-    <a href="/../blog" class="read">Back to blog</a>
+    <Header />
+    <Nav />
+    <section class="main">
+        <h1>{frontmatter.title}</h1>
+        <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
+        <p><em>{frontmatter.description}</em></p>
+        <slot />
+        <a href="/../blog" class="read">Back to blog</a>
+    </section>
     <script src="https://giscus.app/client.js"
             data-repo="MagiHotline/MagiHotline.github.io"
             data-repo-id="R_kgDOMgECcA"
