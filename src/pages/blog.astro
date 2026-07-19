@@ -1,34 +1,69 @@
 ---
 import Layout from "../layouts/Layout.astro";
 const pageTitle = "Blog";
-import "../styles/stylesheet.css";
+
 const posts = await Astro.glob("./posts/*.md");
 ---
 
 <Layout pageTitle={pageTitle}>
-    <!-- Aggiungere script per filtrare i post -->
-    <script></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const buttons = document.querySelectorAll<HTMLElement>("nav.blog button");
+            const posts = document.querySelectorAll<HTMLElement>(".post-wrapper");
+
+            buttons.forEach(button => {
+                button.addEventListener("click", () => {
+                    buttons.forEach(btn => btn.classList.remove("active"));
+                    button.classList.add("active");
+
+                    const filter = button.dataset.filter;
+
+                    posts.forEach(post => {
+                        const tagsStr = post.dataset.tags || "";
+                        const tags = tagsStr.toLowerCase().split(",").map((t: string) => t.trim());
+                        
+                        let shouldShow = false;
+                        
+                        if (filter === "all") {
+                            shouldShow = true;
+                        } else if (filter === "cs") {
+                            shouldShow = tags.includes("computerscience") || tags.includes("cs");
+                        } else if (filter === "math") {
+                            shouldShow = tags.includes("math") || tags.includes("physics");
+                        } else if (filter === "nerdy") {
+                            shouldShow = tags.includes("nerd") || tags.includes("quantumcomputing") || tags.includes("nerdy");
+                        } else if (filter === "misc") {
+                            shouldShow = tags.includes("misc") || tags.includes("astro") || tags.includes("blogging") || tags.includes("learning in public") || tags.includes("thoughts");
+                        }
+
+                        if (shouldShow) {
+                            post.style.display = "block";
+                        } else {
+                            post.style.display = "none";
+                        }
+                    });
+                });
+            });
+        });
+    </script>
     <div id="content">
         <section id="blog">
             <section class="main">
                 <h2 class="main">Blogs</h2>
                 <nav class="blog">
-                    <button class="blog"> All </button>
-                    <button class="blog"> Misc </button>
-                    <button class="blog"> CS </button>
-                    <button class="blog"> Math </button>
-                    <button class="blog"> Nerdy </button>
+                    <button class="blog active" data-filter="all"> All </button>
+                    <button class="blog" data-filter="misc"> Misc </button>
+                    <button class="blog" data-filter="cs"> CS </button>
+                    <button class="blog" data-filter="math"> Math </button>
+                    <button class="blog" data-filter="nerdy"> Nerdy </button>
                 </nav>
                 <div id="postsContainer">
                 { posts
-                  // Sorts posts by date
                   .sort((a, b) => new Date(b.frontmatter.pubDate).getTime() - (new Date(a.frontmatter.pubDate)).getTime())
-                  // Maps over each post
                   .map(post =>
-                    <div id="misc250524">
+                    <div class="post-wrapper" data-tags={(post.frontmatter.tags || []).join(",")}>
                         <article class="blog">
-                            <a href={post.url} class="blog">{post.frontmatter.title}</a
-                            >
+                            <a href={post.url} class="blog">{post.frontmatter.title}</a>
                             <div class="date">Written on {post.frontmatter.pubDate.toString().slice(0, 10)}</div>
                             <div class="entry">
                                 <p>
@@ -38,16 +73,9 @@ const posts = await Astro.glob("./posts/*.md");
                             <a href={post.url} class="read">read more</a>
                         </article>
                     </div>
-                    <!-- COMPUTER SCIENCE POST -->
-                    <div id="cs"></div>
-                    <!-- MATH POST -->
-                    <div id="math"></div>
-                    <!-- NERDY POST -->
-                    <div id="nerdy"></div>
                 )}
                 </div>
             </section>
         </section>
-        <!-- DOVE ANDRANNO POSTATI I BLOGS -->
     </div>
 </Layout>

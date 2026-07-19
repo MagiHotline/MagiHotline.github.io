@@ -156,13 +156,13 @@ footer.header {
   color: #555;
   font-size: small;
   display: flex;
-  gap: 6px;
-  margin-top: 8px;
+  gap: 14px;
+  margin-top: 12px;
   align-items: center;
 }
 
 .dark footer.header a.header {
-  margin-top: 0.7em;
+  margin-top: 0;
   opacity: 0.7;
   display: flex;
   justify-content: space-between;
@@ -174,7 +174,7 @@ footer.header {
 }
 
 footer.header a.header {
-  margin-top: 0.7em;
+  margin-top: 0;
   opacity: 0.7;
   display: flex;
   justify-content: space-between;
@@ -471,11 +471,9 @@ h1.cite {
 article.blog {
   border-radius: 10px;
   border: 1px solid #f2f2f2;
-  gap: 16px;
   display: flex;
   flex-direction: column;
   padding: 16px;
-  gap: 16px;
   height: 100%;
   margin-bottom: 10px;
 }

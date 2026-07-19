@@ -16,6 +16,14 @@ import MyImage from "../assets/me.png";
                 </span>
                 <footer class="header">
                     <a
+                        href="/Curriculum EN.pdf"
+                        download
+                        title="Download Curriculum Vitae"
+                        class="cv-button"
+                    >
+                        Download CV
+                    </a>
+                    <a
                         href="mailto:paolo.imbriani@studenti.univr.it"
                         title="Email Paolo Imbriani"
                         target="_blank"
@@ -53,7 +61,7 @@ import MyImage from "../assets/me.png";
                     </a>
                 </footer>
             </div>
-            <div class="figure">
+            <div class="figure" style="margin-bottom: 8px;">
                 <figure class="header">
                     <Image
                         src={MyImage}
@@ -66,3 +74,33 @@ import MyImage from "../assets/me.png";
         </div>
     </section>
 </header>
+
+<style>
+    .cv-button {
+        display: inline-flex;
+        align-items: center;
+        background-color: #111;
+        color: #fff;
+        padding: 0.2rem 0.6rem;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        line-height: 1;
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+        margin-right: 4px;
+        margin-top: 0;
+    }
+    .cv-button:hover {
+        background-color: #4183c4;
+        color: #fff;
+    }
+    :global(.dark) .cv-button {
+        background-color: #fff;
+        color: #111;
+    }
+    :global(.dark) .cv-button:hover {
+        background-color: #8ab4f8;
+        color: #111;
+    }
+</style>

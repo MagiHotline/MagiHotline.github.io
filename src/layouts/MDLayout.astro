@@ -1,5 +1,6 @@
 ---
 import ThemeIcon from "../components/ThemeIcon.astro";
+import Layout from "./Layout.astro";
 const { frontmatter } = Astro.props;
 ---
 
@@ -18,58 +19,45 @@ const { frontmatter } = Astro.props;
     <script async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </head>
-  <body>
+  <body class="md-layout-body">
     <ThemeIcon />
-    <h1>{frontmatter.title}</h1>
-    <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
-    <p><em>{frontmatter.description}</em></p>
-    <slot />
-    <a href="/../blog" class="read">Back to blog</a>
-    <script src="https://giscus.app/client.js"
-            data-repo="MagiHotline/MagiHotline.github.io"
-            data-repo-id="R_kgDOMgECcA"
-            data-category="General"
-            data-category-id="DIC_kwDOMgECcM4C4AAj"
-            data-mapping="pathname"
-            data-strict="0"
-            data-reactions-enabled="1"
-            data-emit-metadata="1"
-            data-input-position="top"
-            data-theme="preferred_color_scheme"
-            data-lang="en"
-            data-loading="lazy"
-            crossorigin="anonymous"
-            async>
-    </script>
+    
+    <header class="post-header">
+        <h1>{frontmatter.title}</h1>
+        <p class="post-meta">{frontmatter.pubDate.toString().slice(0, 10)}</p>
+        <p class="post-meta"><em>{frontmatter.description}</em></p>
+    </header>
+    
+    <div class="post-content">
+        <slot />
+    </div>
+    
+    <a href="/blog" class="read" style="margin-top: 2rem; display: block;">Back to blog</a>
+    
+    <div style="margin-top: 3rem;">
+        <script src="https://giscus.app/client.js"
+                data-repo="MagiHotline/MagiHotline.github.io"
+                data-repo-id="R_kgDOMgECcA"
+                data-category="General"
+                data-category-id="DIC_kwDOMgECcM4C4AAj"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="1"
+                data-input-position="top"
+                data-theme="preferred_color_scheme"
+                data-lang="en"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+        </script>
+    </div>
   </body>
 </html>
 
 <style is:global>
-
-a {
-    color: #4183c4;
-}
-
-a.read {
-    color: #4183c4;
-    font-size: medium;
-    width: fit-content;
-}
-
-p {
-    margin: 1rem 0;
-    font-size: 1.2rem;
-}
-
 html {
-    font-family:
-        Verdana,
-        Menlo,
-        Monaco,
-        Lucida Console,
-        Courier New,
-        Courier,
-        monospace;
+    font-family: Verdana, Menlo, Monaco, Lucida Console, Courier New, Courier, monospace;
     background: #fff;
     letter-spacing: -0.025rem;
     overflow-x: hidden;
@@ -80,11 +68,7 @@ html.dark {
     color: #fff;
 }
 
-.dark .nav-links a {
-    color: #fff;
-}
-
-body {
+body.md-layout-body {
     margin: 0 auto;
     width: 100%;
     max-width: 90ch;
@@ -96,52 +80,74 @@ body {
     box-sizing: border-box;
 }
 
-h1 {
+.post-header h1 {
+    font-size: 2rem;
+    margin: 1rem 0 0.2rem 0;
+}
+
+.post-header .post-meta {
+    margin: 0.2rem 0;
+    font-size: 1rem;
+    color: #666;
+}
+
+.dark .post-header .post-meta {
+    color: #aaa;
+}
+
+.post-content a {
+    color: #4183c4;
+}
+
+.post-content p {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.post-content h1 {
     margin: 1rem 0;
     font-size: 2rem;
 }
 
-h3 {
-    margin: 1rem 0;
-    font-size: 1rem;
-}
-
-h2 {
+.post-content h2 {
     margin: 1rem 0;
     font-size: 1.5rem;
 }
 
-ul, ol {
+.post-content h3 {
+    margin: 1rem 0;
+    font-size: 1rem;
+}
+
+.post-content ul, .post-content ol {
     margin: 1rem 0;
     padding-left: 2rem;
     font-size: 1rem;
 }
 
-ul {
+.post-content ul {
     list-style-type: disc;
 }
 
-ol {
+.post-content ol {
     list-style-type: decimal;
 }
 
-ul ul {
-  margin: 0.5rem 0 0.5rem 1.5rem;
-  list-style-type: circle;
-}
-
-ol ol {
+.post-content ul ul, .post-content ol ol {
     margin: 0.5rem 0 0.5rem 1.5rem;
-    list-style-type: decimal;
 }
 
-li {
+.post-content ul ul {
+    list-style-type: circle;
+}
+
+.post-content li {
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
     line-height: 1.6;
 }
 
-blockquote {
+.post-content blockquote {
   padding: 0 1em;
   color: #5CB685;
   border-left: 0.25em solid #d0d7de;
@@ -150,23 +156,16 @@ blockquote {
 }
 
 @media (max-width: 600px) {
-    body {
-        padding: 1rem;
-    }
-
-    h1 {
+    .post-content h1 {
         font-size: 1.8rem;
     }
-
-    h2 {
+    .post-content h2 {
         font-size: 1.5rem;
     }
-
-    p, li {
+    .post-content p, .post-content li {
         font-size: 1.05rem;
     }
-
-    img, svg, canvas {
+    .post-content img, .post-content svg, .post-content canvas {
         max-width: 100%;
         height: auto;
     }

@@ -6,51 +6,118 @@ import Layout from "../layouts/Layout.astro";
     <div id="content">
         <section id="progress">
             <section class="main">
-                <h2 class="main">Classes</h2>
+                <h2 class="main">University Progress</h2>
                 <p class="class">
-                    Here's a list of all the courses and classes I have taken in
-                    my university career. In Italy we have grades on a scale
-                    from 0 to 30.
+                    Here is an overview of my academic journey. I have successfully completed my Bachelor's degree and I am currently pursuing a Master's Degree in Computer Engineering. In Italy we have grades on a scale from 0 to 30.
                 </p>
-                <article class="class">
-                    <div class="content">
-                        <header class="class">
-                            <h3 class="class">MAT</h3>
-                            <p class="class">Calculus 1, 2, 3</p>
-                            <p class="class">Logic</p>
-                            <p class="class">Linear Algebra</p>
-                            <p class="class">Probability and Statistics</p>
-                        </header>
-                        <header class="class">
-                            <h3 class="class">FIS</h3>
-                            <p class="class">Physics 1</p>
-                            <p class="class">Physics 2</p>
-                            <p class="class">Introduction to Quantum Mechanics for Quantum Computing</p>
-                        </header>
+
+                <div class="degree-section">
+                    <div class="degree-header">
+                        <h3 class="degree-title">Master's Degree in Computer Engineering</h3>
+                        <span class="badge in-progress">In Progress</span>
                     </div>
-                    <div class="content">
-                        <header class="class">
-                            <h3 class="class">ING-INF</h3>
-                            <p class="class">Computer Architecture</p>
-                            <p class="class">Operating Systems</p>
-                            <p class="class">System Theory</p>
-                        </header>
-                        <header class="class">
-                            <h3 class="class">INF</h3>
-                            <p class="class">Programming 1</p>
-                            <p class="class">Programming 2 and Software Engineering</p>
-                            <p class="class">Algorithms</p>
-                            <p class="class">Computer Networks</p>
-                            <p class="class">Functional Programming</p>
-                            <p class="class">Programming Smart Contracts (Ethereum)</p>
-                        </header>
+                    <article class="class">
+                        <div class="content">
+                            <header class="class">
+                                <h3 class="class">Current Focus</h3>
+                                <p class="class">Advanced Computer Engineering courses, distributed systems, and modern software architectures.</p>
+                            </header>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="degree-section">
+                    <div class="degree-header">
+                        <h3 class="degree-title">Bachelor's Degree in Computer Science</h3>
+                        <span class="badge completed">Completed</span>
                     </div>
-                </article>
-                <footer class="class">
-                    <span class="class">Grade Average: 27.2</span>
-                    <span class="class">Weighted Graduation Average: 99</span>
-                </footer>
+                    <article class="class">
+                        <div class="content">
+                            <header class="class">
+                                <h3 class="class">MATH</h3>
+                                <p class="class">Calculus 1, 2, 3</p>
+                                <p class="class">Logic</p>
+                                <p class="class">Linear Algebra</p>
+                                <p class="class">Probability and Statistics</p>
+                            </header>
+                            <header class="class">
+                                <h3 class="class">PHYS</h3>
+                                <p class="class">Physics 1</p>
+                                <p class="class">Physics 2</p>
+                                <p class="class">Introduction to Quantum Mechanics for Quantum Computing</p>
+                            </header>
+                        </div>
+                        <div class="content">
+                            <header class="class">
+                                <h3 class="class">COMP-ING</h3>
+                                <p class="class">Computer Architecture</p>
+                                <p class="class">Operating Systems</p>
+                                <p class="class">System Theory</p>
+                            </header>
+                            <header class="class">
+                                <h3 class="class">CS</h3>
+                                <p class="class">Programming 1</p>
+                                <p class="class">Programming 2 and Software Engineering</p>
+                                <p class="class">Algorithms</p>
+                                <p class="class">Computer Networks</p>
+                                <p class="class">Functional Programming</p>
+                                <p class="class">Programming Smart Contracts (Ethereum)</p>
+                                <p class="class">Languages and interpreters</p>
+                                <p class="class">Databases</p>
+                                <p class="class">Artificial Intelligence</p>
+                                <p class="class">Signal and Images processing</p>
+                                <p class="class">Foundations of Computing</p>
+                            </header>
+                        </div>
+                    </article>
+                    <footer class="class">
+                        <span class="class">Bachelor Grade Average: 27.2</span>
+                        <span class="class">Weighted Graduation Average: 99</span>
+                    </footer>
+                </div>
             </section>
         </section>
     </div>
 </Layout>
+
+<style>
+    .degree-section {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    .degree-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.75rem;
+    }
+    .degree-title {
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin: 0;
+    }
+    .badge {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.6rem;
+        border-radius: 9999px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .badge.completed {
+        background-color: #e6f4ea;
+        color: #137333;
+    }
+    .badge.in-progress {
+        background-color: #e8f0fe;
+        color: #1a73e8;
+    }
+    :global(.dark) .badge.completed {
+        background-color: rgba(19, 115, 51, 0.3);
+        color: #81c995;
+    }
+    :global(.dark) .badge.in-progress {
+        background-color: rgba(26, 115, 232, 0.3);
+        color: #8ab4f8;
+    }
+</style>
