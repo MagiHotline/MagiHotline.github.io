@@ -335,16 +335,18 @@ html, body {
   color: var(--cart-accent);
 }
 
-/* 88x31 Micro-Badge Matrix (Tightly Attached) */
+/* 88x31 Micro-Badge Matrix with Bottom Pager */
 .badge-matrix-section {
   padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .section-tag {
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--text-dim);
-  margin-bottom: 8px;
   text-transform: lowercase;
 }
 
@@ -353,6 +355,7 @@ html, body {
   flex-wrap: wrap;
   gap: 3px;
   align-items: center;
+  width: 100%;
 }
 
 .badge-link {
@@ -361,6 +364,11 @@ html, body {
   border: 1px solid #313244;
   transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   user-select: none;
+  text-decoration: none;
+}
+
+.badge-static {
+  cursor: default;
 }
 
 .badge-clickable {
@@ -373,12 +381,204 @@ html, body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 0 0 8px rgba(203, 166, 247, 0.25);
 }
 
+.badge-link.inspect-mode {
+  cursor: crosshair;
+}
+
+.badge-link.inspect-mode:hover {
+  border-color: #4ade80;
+  transform: scale(1.04);
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.4);
+}
+
 .badge-img {
   width: 88px;
   height: 31px;
   display: block;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
+}
+
+/* Text-Only Picker Switch */
+.picker-control-bar {
+  margin: 2px 0;
+}
+
+.picker-toggle-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text-dim);
+  font-family: inherit;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: color 0.15s ease;
+  user-select: none;
+}
+
+.picker-toggle-btn:hover {
+  color: var(--text-main);
+  text-decoration: underline;
+}
+
+.picker-toggle-btn.active {
+  color: #72b87c;
+}
+
+.picker-toggle-btn.active:hover {
+  color: #8edb98;
+}
+
+.picker-btn-text strong {
+  font-weight: 700;
+}
+
+/* Single Green Box Screen on the Bottom */
+.pager-green-box {
+  width: 100%;
+  background: #040a05;
+  border: 1px solid #0f2412;
+  border-radius: 4px;
+  padding: 12px 14px;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #1f4524;
+  font-family: "Inconsolata", monospace;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
+}
+
+/* Subtle scanlines */
+.pager-green-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Activated State - Gentle Calm Green Phosphor */
+.pager-green-box.powered-on {
+  background: #07150a;
+  border-color: #27522e;
+  color: #72b87c;
+  box-shadow: inset 0 0 14px rgba(46, 110, 56, 0.12), 0 0 6px rgba(46, 110, 56, 0.15);
+}
+
+.pager-screen-content {
+  position: relative;
+  z-index: 1;
+}
+
+.pager-box-standby {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pager-box-status {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #204a25;
+}
+
+.pager-green-box.powered-on .pager-box-status {
+  color: #72b87c;
+}
+
+.pager-box-ready {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pager-box-sub {
+  font-size: 0.78rem;
+  color: #5c9e65;
+}
+
+.pager-box-detail {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Selected Badge Highlight */
+.pager-badge-header {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.pager-badge-preview {
+  width: 88px;
+  height: 31px;
+  display: block;
+  border: 1px solid #204a25;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Simple Topic, Highlighted Title, and Description */
+.pager-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-grow: 1;
+}
+
+.pager-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pager-topic-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #4e8c58;
+  letter-spacing: 0.04em;
+}
+
+.pager-title-text {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #bbf7d0;
+  letter-spacing: 0.02em;
+}
+
+.pager-desc-text {
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: #8edb98;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .pager-box-detail {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
 }
 
 /* Footer */
