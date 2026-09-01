@@ -1,0 +1,413 @@
+/* ----------------------------------------------------
+   src/styles/sh.css
+   CATPPUCCIN MOCHA (DARK) & INCONSOLATA BASE
+----------------------------------------------------- */
+
+:root {
+  --bg-main: #1e1e2e;
+  --bg-header: rgba(24, 24, 37, 0.88);
+  --border-subtle: #313244;
+  --border-bright: #45475a;
+  --text-main: #cdd6f4;
+  --text-muted: #a6adc8;
+  --text-dim: #6c7086;
+  --accent-mauve: #cba6f7;
+  --accent-lavender: #b4befe;
+  --accent-blue: #89b4fa;
+  --accent-sapphire: #74c7ec;
+  --accent-green: #a6e3a1;
+  --accent-peach: #fab387;
+  --cart-plastic: #181825;
+  --cart-plastic-hover: #262738;
+  --cart-sticker-bg: #11111b;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: "Inconsolata", monospace;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Header */
+.sh-header {
+  width: 100%;
+  border-bottom: 1px solid var(--border-subtle);
+  background-color: var(--bg-header);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.back-link {
+  color: var(--accent-mauve);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.back-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Container */
+.sh-container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Title Section & Mascot */
+.title-section {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.title-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  display: inline-block;
+}
+
+.main-title::after {
+  content: "_";
+  color: var(--accent-mauve);
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Social icons below title */
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.social-icon-btn {
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+  background-color: var(--cart-plastic);
+  transition: all 0.15s ease;
+  line-height: 0;
+}
+
+.social-icon-btn:hover {
+  color: var(--accent-mauve);
+  border-color: var(--accent-mauve);
+  background-color: var(--cart-plastic-hover);
+  transform: translateY(-2px);
+}
+
+/* Title Right Thinking Mascot */
+.title-right {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.thinking-mascot {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+}
+
+.thinking-mascot:hover {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+/* About section */
+.about-section {
+  padding: 0;
+}
+
+.about-text {
+  color: var(--text-main);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  text-align: justify;
+}
+
+/* Old-School Cartridges Rack */
+.cartridges-rack {
+  width: 100%;
+}
+
+.rack-heading {
+  font-size: 0.85rem;
+  color: var(--accent-lavender);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.cartridges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+/* Old-School Cartridge Physical Shell */
+.cartridge {
+  background-color: var(--cart-plastic);
+  border: 1px solid #313244;
+  border-top: 2px solid #45475a;
+  border-radius: 4px 4px 2px 2px;
+  padding: 6px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35), inset 1px 1px 0 rgba(255, 255, 255, 0.05);
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+}
+
+.cartridge:hover {
+  background-color: var(--cart-plastic-hover);
+  border-color: var(--cart-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5), 0 0 10px rgba(203, 166, 247, 0.2);
+}
+
+/* Top Grip & Code */
+.cart-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+}
+
+.cart-grip {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 24px;
+}
+
+.cart-grip span {
+  height: 1px;
+  background-color: #45475a;
+  display: block;
+  width: 100%;
+}
+
+.cart-arrow {
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  transition: color 0.15s ease;
+}
+
+.cartridge:hover .cart-arrow {
+  color: var(--cart-accent);
+}
+
+.cart-code {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+/* Cartridge Recessed Sticker / Label */
+.cart-label {
+  background-color: var(--cart-sticker-bg);
+  border: 1px solid #232436;
+  border-radius: 2px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  overflow: hidden;
+  height: 96px;
+  justify-content: space-between;
+}
+
+.label-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.label-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.label-sub {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+/* Fixed-size Description text block */
+.label-desc-wrap {
+  height: 44px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+}
+
+.label-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+  margin: 0;
+  opacity: 0.45;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.cartridge:hover .label-desc {
+  opacity: 1;
+  color: var(--text-main);
+}
+
+.label-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2px;
+}
+
+.insert-hint {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+  transition: color 0.15s ease;
+}
+
+.cartridge:hover .insert-hint {
+  color: var(--cart-accent);
+}
+
+/* 88x31 Micro-Badge Matrix (Tightly Attached) */
+.badge-matrix-section {
+  padding-top: 10px;
+}
+
+.section-tag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  text-transform: lowercase;
+}
+
+.matrix-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  align-items: center;
+}
+
+.badge-link {
+  display: inline-block;
+  line-height: 0;
+  border: 1px solid #313244;
+  transition: border-color 0.15s ease;
+}
+
+.badge-link:hover {
+  border-color: var(--accent-mauve);
+}
+
+.badge-img {
+  width: 88px;
+  height: 31px;
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Footer */
+.sh-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.sh-footer a {
+  color: var(--accent-mauve);
+  text-decoration: none;
+}
+
+.sh-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 720px) {
+  .main-title {
+    font-size: 2.2rem;
+  }
+
+  .sh-container {
+    padding: 20px 14px 40px;
+    gap: 20px;
+  }
+
+  .cartridges-grid {
+    grid-template-columns: 1fr;
+  }
+}
