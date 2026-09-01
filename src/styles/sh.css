@@ -209,15 +209,14 @@ html, body {
   gap: 6px;
   position: relative;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35), inset 1px 1px 0 rgba(255, 255, 255, 0.05);
-  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
   cursor: pointer;
 }
 
 .cartridge:hover {
   background-color: var(--cart-plastic-hover);
   border-color: var(--cart-accent);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5), 0 0 10px rgba(203, 166, 247, 0.2);
+  box-shadow: 0 0 14px var(--cart-accent), 0 3px 6px rgba(0, 0, 0, 0.35);
 }
 
 /* Top Grip & Code */
@@ -360,11 +359,18 @@ html, body {
   display: inline-block;
   line-height: 0;
   border: 1px solid #313244;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  user-select: none;
 }
 
-.badge-link:hover {
+.badge-clickable {
+  cursor: pointer;
+}
+
+.badge-clickable:hover {
   border-color: var(--accent-mauve);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 0 0 8px rgba(203, 166, 247, 0.25);
 }
 
 .badge-img {

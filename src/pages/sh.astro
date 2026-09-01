@@ -84,9 +84,20 @@ const cartridges = [
   }
 ];
 
+// Optional website links for specific badges (matched by filename without extension)
+const badgeLinks: Record<string, string> = {
+  eighty: "https://eightyeightthirty.one",
+  rust: "https://rust-lang.org/",
+  godot: "https://godotengine.org",
+  linux: "https://www.kernel.org",
+  neocities: "https://neocities.org",
+  poweredbyfedora: "https://fedoraproject.org",
+  steam: "https://store.steampowered.com",
+};
+
 // Automatically load all badges from src/assets/badges/
 const badgeFiles = import.meta.glob<{ default: ImageMetadata }>(
-  "../assets/badges/*.{png,gif,jpg,jpeg,svg,webp}",
+  "../assets/badges/*.{png,gif,jpg,jpeg,svg,webp,avif}",
   { eager: true }
 );
 
@@ -95,6 +106,7 @@ const badges = Object.entries(badgeFiles).map(([path, mod]) => {
   return {
     image: mod.default,
     name: filename,
+    url: badgeLinks[filename] || null,
   };
 });
 ---
@@ -210,18 +222,37 @@ const badges = Object.entries(badgeFiles).map(([path, mod]) => {
         <section class="badge-matrix-section">
           <div class="section-tag">88x31 matrix</div>
           <div class="matrix-grid">
-            {badges.map((b) => (
-              <div class="badge-link" title={b.name}>
-                <Image
-                  src={b.image}
-                  alt={b.name}
-                  width={88}
-                  height={31}
-                  class="badge-img"
-                  loading="lazy"
-                />
-              </div>
-            ))}
+            {badges.map((b) =>
+              b.url ? (
+                <a
+                  href={b.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="badge-link badge-clickable"
+                  title={`${b.name} (${b.url})`}
+                >
+                  <Image
+                    src={b.image}
+                    alt={b.name}
+                    width={88}
+                    height={31}
+                    class="badge-img"
+                    loading="lazy"
+                  />
+                </a>
+              ) : (
+                <div class="badge-link" title={b.name}>
+                  <Image
+                    src={b.image}
+                    alt={b.name}
+                    width={88}
+                    height={31}
+                    class="badge-img"
+                    loading="lazy"
+                  />
+                </div>
+              )
+            )}
           </div>
         </section>
       )}
