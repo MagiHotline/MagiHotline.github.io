@@ -200,7 +200,7 @@ html, body {
 .cartridge {
   background-color: var(--cart-plastic);
   border: 1px solid #313244;
-  border-top: 2px solid #45475a;
+  border-top: 3px solid var(--cart-accent);
   border-radius: 4px 4px 2px 2px;
   padding: 6px;
   text-decoration: none;
@@ -209,14 +209,12 @@ html, body {
   gap: 6px;
   position: relative;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35), inset 1px 1px 0 rgba(255, 255, 255, 0.05);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
   cursor: pointer;
 }
 
 .cartridge:hover {
   background-color: var(--cart-plastic-hover);
   border-color: var(--cart-accent);
-  box-shadow: 0 0 14px var(--cart-accent), 0 3px 6px rgba(0, 0, 0, 0.35);
 }
 
 /* Top Grip & Code */
@@ -246,7 +244,6 @@ html, body {
 .cart-arrow {
   font-size: 0.6rem;
   color: var(--text-dim);
-  transition: color 0.15s ease;
 }
 
 .cartridge:hover .cart-arrow {
@@ -256,7 +253,7 @@ html, body {
 .cart-code {
   font-size: 0.65rem;
   font-weight: 700;
-  color: var(--text-dim);
+  color: var(--cart-accent);
   letter-spacing: 0.05em;
 }
 
@@ -285,7 +282,7 @@ html, body {
 .label-title {
   font-size: 0.85rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--cart-accent);
   letter-spacing: 0.04em;
 }
 
@@ -309,7 +306,6 @@ html, body {
   line-height: 1.35;
   margin: 0;
   opacity: 0.45;
-  transition: opacity 0.15s ease, color 0.15s ease;
 }
 
 .cartridge:hover .label-desc {
@@ -328,7 +324,6 @@ html, body {
   font-weight: 700;
   color: var(--text-dim);
   letter-spacing: 0.05em;
-  transition: color 0.15s ease;
 }
 
 .cartridge:hover .insert-hint {
