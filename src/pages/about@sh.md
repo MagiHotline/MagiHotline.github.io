@@ -18,7 +18,7 @@ So do not fear of texting me (in all the social medias you can find in the home 
 ## Interests
 
 I am an avid manga reader and anime watcher. I also played lots of videogames, where my favourites are the _Ryu Ga Gotoku_ game series and the _The Legend of Zelda_ game series. I assume you have never seen this type of combo, huh.
-I love art, books and sports. I would say I am very versatile in almost every topic. I like to be open-minded, trying to see always all the sides of the multishaped medal.
+I also love any type of RPG but I mostly play classic 5.5e DnD. I love art, books and sports. I would say I am very versatile in almost every topic. I like to be open-minded, trying to see always all the sides of the multishaped medal.
 During my university years, I have encountered a topic that really made me passionate. Formal logic in general, Software verification in the specific. I don't think I am yet to prepared to tackle this problems, but for sure is what I would love to learn about more (also, automated reasoning).
 
 I also like tinkering, software-wise for now, but I really would like to get some hardware where I can develop something someday.

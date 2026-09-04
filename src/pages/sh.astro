@@ -84,117 +84,16 @@ const cartridges = [
   }
 ];
 
-interface BadgeMeta {
-  title: string;
-  type: string;
-  desc: string;
-  url?: string;
-}
-
-// 88x31 Metadata Registry for Disambiguation (Friends, Communities, Software, Systems)
-const badgeRegistry: Record<string, BadgeMeta> = {
-  nintendo: {
-    title: "Nintendo",
-    type: "community",
-    desc: "I have been a Nintendlover all my life.",
-    url: ""
-  },
-  sonic: {
-    title: "Sonic's Fandom",
-    type: "community",
-    desc: "I love sonic games even though I haven't played much of them. My favourite is Sonic Rush Adventure for the DS",
-    url: "https://astro.build/"
-  },
-  astro: {
-    title: "Astro Framework",
-    type: "software",
-    desc: "This website was made with Astro. Embrace Astro.",
-    url: "https://astro.build/"
-  },
-  godot: {
-    title: "Godot Engine",
-    type: "software",
-    desc: "I worked with the Godot Engine some time ago,"+
-   " and I still have a secret project ongoing. Shhhhh.",
-    url: "https://godotengine.org"
-  },
-  linux: {
-    title: "GNU / Linux",
-    type: "system",
-    desc: "I refuse to work on any machine that does not have UNIX.",
-    url: "https://www.kernel.org"
-  },
-  poweredbyfedora: {
-    title: "Fedora Linux",
-    type: "system",
-    desc: "My first linux distro. Thanks to the @niri and @noctalia community to have brought "+
-    "such a fantastic home desktop experience :)",
-    url: "https://fedoraproject.org"
-  },
-  neocities: {
-    title: "Neocities",
-    type: "community",
-    desc: "Since AI arrived, I really think human need to gain again control over the web.",
-    url: "https://neocities.org"
-  },
-  steam: {
-    title: "Steam",
-    type: "gaming",
-    desc: "Add me on Steam! My name is magidoof774!",
-    url: "https://store.steampowered.com"
-  },
-  rust: {
-    title: "Rust Lang",
-    type: "software",
-    desc: "Best programming language ever and also my main one. "+
-    "Who also want a memory safe system programming language?",
-    url: "https://rust-lang.org/"
-  },
-  eighty: {
-    title: "88x31 Archive",
-    type: "web",
-    desc: "While looking through 88x31 archives, I finished in this rabbit hole. Thanks a bunch to whoever made it!",
-    url: "https://eightyeightthirty.one"
-  },
-  minecraft: {
-    title: "Minecraft",
-    type: "gaming",
-    desc: "Minecraft will forever be the game of my dreams. Mods or vanilla, there's no stop to the fun.",
-    url: ""
-  },
-  zelda: {
-    title: "The Legend of Zelda",
-    type: "gaming",
-    desc: "In love with the Legend of Zelda games, particularly BOTW has marked me from within.",
-    url: ""
-  },
-  wii: {
-    title: "Nintendo Wii",
-    type: "hardware",
-    desc: "Motion-controlled console nostalgia.",
-    url: ""
-  },
-  macos_mov: {
-    title: "Mac OS",
-    type: "system",
-    desc: "Although the many kernel problems, MacOS still feels the best among the OSes.",
-    url: ""
-  },
-  handcoded: {
-    title: "Handcoded HTML",
-    type: "web",
-    desc: "I mainly craft code by hand. Sometimes, like parts of this website I like to spin up my free "+
-    "antigravity subscription and use to make the visuals better. I like coding so much that I had to embrace "
-    +"the probable future of software. While still enjoying and doing what I love most: handcoding.",
-    url: ""
-  },
-  button356: {
-    title: "Gamecube",
-    type: "community",
-    desc: "I have been a fan of the console since I was a little kid, but I have never "+
-    "had the opportunity to have it.",
-    url: ""
-  }
+// Optional website links for specific badges (matched by filename without extension)
+const badgeLinks: Record<string, string> = {
+  astro: "https://astro.build/",
+  eighty: "https://eightyeightthirty.one",
+  rust: "https://rust-lang.org/",
+  godot: "https://godotengine.org",
+  linux: "https://www.kernel.org",
+  neocities: "https://neocities.org",
+  poweredbyfedora: "https://fedoraproject.org",
+  steam: "https://store.steampowered.com",
 };
 
 // Automatically load all badges from src/assets/badges/
@@ -205,19 +104,10 @@ const badgeFiles = import.meta.glob<{ default: ImageMetadata }>(
 
 const badges = Object.entries(badgeFiles).map(([path, mod]) => {
   const filename = path.split("/").pop()?.replace(/\.[^/.]+$/, "") || "badge";
-  const meta = badgeRegistry[filename] || {
-    title: filename.length > 20 ? "Friend / Indie Badge" : filename,
-    type: "friend / community",
-    desc: "Friend or community button on the matrix.",
-    url: ""
-  };
   return {
     image: mod.default,
     name: filename,
-    title: meta.title,
-    type: meta.type,
-    desc: meta.desc,
-    url: meta.url || null,
+    url: badgeLinks[filename] || null,
   };
 });
 ---
@@ -328,60 +218,42 @@ const badges = Object.entries(badgeFiles).map(([path, mod]) => {
         </div>
       </section>
 
-      <!-- 88x31 Badge Matrix with Minimalist Black Pager on the bottom -->
+      <!-- 88x31 Badge Matrix (Dynamically loaded from src/assets/badges/) -->
       {badges.length > 0 && (
         <section class="badge-matrix-section">
           <div class="section-tag">88x31 matrix</div>
           <div class="matrix-grid">
-            {badges.map((b) => (
-              <a
-                href={b.url || undefined}
-                target={b.url ? "_blank" : undefined}
-                rel={b.url ? "noopener noreferrer" : undefined}
-                class={`badge-link ${b.url ? "badge-clickable" : "badge-static"}`}
-                data-badge="true"
-                data-name={b.name}
-                data-title={b.title}
-                data-type={b.type}
-                data-desc={b.desc}
-                data-img-src={b.image.src}
-                data-url={b.url || ""}
-                title={`${b.title} [${b.type}]`}
-              >
-                <Image
-                  src={b.image}
-                  alt={b.name}
-                  width={88}
-                  height={31}
-                  class="badge-img"
-                  loading="lazy"
-                />
-              </a>
-            ))}
-          </div>
-
-          <!-- Text-Only Picker Toggle directly beneath matrix -->
-          <div class="picker-control-bar">
-            <button
-              type="button"
-              id="pager-picker-btn"
-              class="picker-toggle-btn"
-              aria-pressed="false"
-              title="Toggle 88x31 Pager Inspector"
-            >
-              <span class="picker-btn-text">
-                &gt; 88x31 details: <strong id="picker-status-text">disabled</strong>
-              </span>
-            </button>
-          </div>
-
-          <!-- Single Green Box on the bottom -->
-          <div class="pager-green-box" id="pager-lcd-screen">
-            <div class="pager-screen-content" id="pager-screen-body">
-              <div class="pager-box-standby">
-                <div class="pager-box-status">&#9632; [88x31 details disabled]</div>
-              </div>
-            </div>
+            {badges.map((b) =>
+              b.url ? (
+                <a
+                  href={b.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="badge-link badge-clickable"
+                  title={`${b.name} (${b.url})`}
+                >
+                  <Image
+                    src={b.image}
+                    alt={b.name}
+                    width={88}
+                    height={31}
+                    class="badge-img"
+                    loading="lazy"
+                  />
+                </a>
+              ) : (
+                <div class="badge-link" title={b.name}>
+                  <Image
+                    src={b.image}
+                    alt={b.name}
+                    width={88}
+                    height={31}
+                    class="badge-img"
+                    loading="lazy"
+                  />
+                </div>
+              )
+            )}
           </div>
         </section>
       )}
@@ -393,93 +265,5 @@ const badges = Object.entries(badgeFiles).map(([path, mod]) => {
         <a href="/">return to main hotline</a>
       </footer>
     </main>
-
-    <!-- Client Script for Pager Inspector -->
-    <script is:inline>
-      const pickerBtn = document.getElementById("pager-picker-btn");
-      const statusText = document.getElementById("picker-status-text");
-      const lcdScreen = document.getElementById("pager-lcd-screen");
-      const screenBody = document.getElementById("pager-screen-body");
-      const badges = document.querySelectorAll(".matrix-grid [data-badge]");
-
-      let detailsEnabled = false;
-
-      function renderPagerScreen(html) {
-        if (screenBody) {
-          screenBody.innerHTML = html;
-        }
-      }
-
-      function disableDetails() {
-        detailsEnabled = false;
-        pickerBtn?.setAttribute("aria-pressed", "false");
-        pickerBtn?.classList.remove("active");
-        if (statusText) statusText.textContent = "disabled";
-        lcdScreen?.classList.remove("powered-on");
-        badges.forEach((b) => b.classList.remove("inspect-mode"));
-        renderPagerScreen(`
-          <div class="pager-box-standby">
-            <div class="pager-box-status">&#9632; [88x31 details disabled]</div>
-          </div>
-        `);
-      }
-
-      function enableDetails() {
-        detailsEnabled = true;
-        pickerBtn?.setAttribute("aria-pressed", "true");
-        pickerBtn?.classList.add("active");
-        if (statusText) statusText.textContent = "enabled";
-        lcdScreen?.classList.add("powered-on");
-        badges.forEach((b) => b.classList.add("inspect-mode"));
-        renderPagerScreen(`
-          <div class="pager-box-ready">
-            <div class="pager-box-status">&#9679; [PICKER ACTIVE]</div>
-            <div class="pager-box-sub">Click any 88x31 badge to inspect.</div>
-          </div>
-        `);
-      }
-
-      pickerBtn?.addEventListener("click", () => {
-        if (detailsEnabled) {
-          disableDetails();
-        } else {
-          enableDetails();
-        }
-      });
-
-      badges.forEach((badge) => {
-        badge.addEventListener("click", (e) => {
-          if (!detailsEnabled) {
-            // Let normal link navigation happen if url exists
-            return;
-          }
-
-          // In inspector mode, intercept navigation & display text on single green screen
-          e.preventDefault();
-          const title = badge.getAttribute("data-title") || "Badge";
-          const type = badge.getAttribute("data-type") || "community";
-          const desc = badge.getAttribute("data-desc") || "88x31 button";
-          const imgSrc =
-            badge.getAttribute("data-img-src") ||
-            badge.querySelector("img")?.src ||
-            "";
-
-          renderPagerScreen(`
-            <div class="pager-box-detail">
-              <div class="pager-badge-header">
-                <img src="${imgSrc}" alt="${title}" class="pager-badge-preview" width="88" height="31" />
-              </div>
-              <div class="pager-info-list">
-                <div class="pager-title-row">
-                  <span class="pager-topic-tag">[${type}]</span>
-                  <strong class="pager-title-text">${title}</strong>
-                </div>
-                <p class="pager-desc-text">${desc}</p>
-              </div>
-            </div>
-          `);
-        });
-      });
-    </script>
   </body>
 </html>
