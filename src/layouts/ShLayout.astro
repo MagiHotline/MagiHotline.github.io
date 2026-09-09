@@ -1,6 +1,7 @@
 ---
 // src/layouts/ShLayout.astro
 import "../styles/sh.css";
+import ThemeIcon from "../components/ThemeIcon.astro";
 
 interface Props {
   title?: string;
@@ -31,6 +32,14 @@ const pageDesc = frontmatter?.description || description || "magi / sh about";
       href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <script is:inline>
+      const savedTheme = typeof localStorage !== "undefined" && localStorage.getItem("theme");
+      if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
   </head>
   <body>
     <!-- Minimal Header with /sh and hotline navigation -->
@@ -39,9 +48,12 @@ const pageDesc = frontmatter?.description || description || "magi / sh about";
         <a href="/sh" class="back-link">
           &larr; home
         </a>
-        <a href="/" class="back-link" style="color: var(--text-dim); font-size: 0.85rem;">
-          to the hotline &rarr;
-        </a>
+        <div class="header-right-group">
+          <a href="/" class="back-link hotline-link">
+            to the hotline &rarr;
+          </a>
+          <ThemeIcon />
+        </div>
       </div>
     </header>
 
@@ -68,20 +80,47 @@ const pageDesc = frontmatter?.description || description || "magi / sh about";
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
   }
 
-  /* Catppuccin Mocha Markdown Styling */
+  .header-right-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hotline-link {
+    color: var(--text-dim) !important;
+    font-size: 0.85rem;
+  }
+
+  .hotline-link:hover {
+    color: var(--text-main) !important;
+  }
+
+  /* Adaptive Markdown Styling */
   .sh-prose {
     color: var(--text-main);
-    font-family: "Inconsolata", monospace;
+    font-family:     "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
     line-height: 1.7;
   }
 
   .sh-prose h1 {
     font-size: 2.2rem;
     font-weight: 800;
-    color: #fff;
+    color: var(--main-title);
     margin: 0.5rem 0 1.5rem 0;
     letter-spacing: -0.03em;
     border-bottom: 1px solid var(--border-subtle);
@@ -91,24 +130,24 @@ const pageDesc = frontmatter?.description || description || "magi / sh about";
   .sh-prose h2 {
     font-size: 1.45rem;
     font-weight: 700;
-    color: var(--accent-mauve);
+    color: var(--accent-emerald);
     margin: 2rem 0 0.8rem 0;
     letter-spacing: -0.01em;
-    border-bottom: 1px solid rgba(49, 50, 68, 0.6);
+    border-bottom: 1px solid var(--border-subtle);
     padding-bottom: 0.4rem;
   }
 
   .sh-prose h3 {
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--accent-blue);
+    color: var(--accent-green);
     margin: 1.4rem 0 0.4rem 0;
   }
 
   .sh-prose h4 {
     font-size: 1.05rem;
     font-weight: 600;
-    color: var(--accent-lavender);
+    color: var(--accent-teal);
     margin: 1.2rem 0 0.3rem 0;
   }
 
@@ -120,14 +159,14 @@ const pageDesc = frontmatter?.description || description || "magi / sh about";
   }
 
   .sh-prose a {
-    color: var(--accent-mauve);
+    color: var(--accent-emerald);
     text-decoration: underline;
     text-underline-offset: 3px;
     transition: color 0.15s ease;
   }
 
   .sh-prose a:hover {
-    color: #fff;
+    color: var(--text-main);
   }
 
   .sh-prose ul {
@@ -163,12 +202,12 @@ const pageDesc = frontmatter?.description || description || "magi / sh about";
   }
 
   .sh-prose li::marker {
-    color: var(--accent-mauve);
+    color: var(--accent-emerald);
   }
 
   .sh-prose blockquote {
     border-left: 3px solid var(--accent-green);
-    background-color: var(--cart-plastic);
+    background-color: var(--card-bg);
     padding: 12px 16px;
     margin: 1.4rem 0;
     border-radius: 0 4px 4px 0;
@@ -182,7 +221,7 @@ const pageDesc = frontmatter?.description || description || "magi / sh about";
   }
 
   .sh-prose code {
-    background-color: var(--cart-sticker-bg);
+    background-color: var(--btn-bg);
     border: 1px solid var(--border-subtle);
     color: var(--accent-peach);
     font-family: "Inconsolata", monospace;
@@ -192,7 +231,7 @@ const pageDesc = frontmatter?.description || description || "magi / sh about";
   }
 
   .sh-prose pre {
-    background-color: var(--cart-plastic) !important;
+    background-color: var(--card-bg) !important;
     border: 1px solid var(--border-subtle);
     border-radius: 6px;
     padding: 16px;
@@ -229,12 +268,12 @@ const pageDesc = frontmatter?.description || description || "magi / sh about";
   }
 
   .sh-prose th {
-    background-color: var(--cart-plastic);
-    color: var(--accent-lavender);
+    background-color: var(--card-bg);
+    color: var(--accent-green);
     font-weight: 700;
   }
 
   .sh-prose tr:nth-child(even) td {
-    background-color: rgba(24, 24, 37, 0.4);
+    background-color: var(--table-even-bg);
   }
 </style>

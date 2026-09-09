@@ -4,39 +4,96 @@
 ----------------------------------------------------- */
 
 :root {
-  --bg-main: #1e1e2e;
-  --bg-header: rgba(24, 24, 37, 0.88);
-  --border-subtle: #313244;
-  --border-bright: #45475a;
-  --text-main: #cdd6f4;
-  --text-muted: #a6adc8;
-  --text-dim: #6c7086;
-  --accent-mauve: #cba6f7;
+  /* Day / Light Theme (Plain White Base) */
+  --bg-main: #ffffff;
+  --bg-header: rgba(255, 255, 255, 0.92);
+  --border-subtle: #e4e4e7;
+  --border-bright: #d1d5db;
+  --text-main: #18181b;
+  --text-muted: #52525b;
+  --text-dim: #71717a;
+  --accent-emerald: #059669;
+  --accent-mauve: var(--accent-emerald);
+  --accent-lavender: #4f46e5;
+  --accent-blue: #2563eb;
+  --accent-sapphire: #0284c7;
+  --accent-green: #16a34a;
+  --accent-teal: #0d9488;
+  --accent-peach: #ea580c;
+  --card-bg: #fafafa;
+  --card-bg-hover: #f4f4f5;
+  --btn-bg: #f4f4f5;
+  --btn-bg-hover: #e4e4e7;
+  --main-title: #111827;
+  --table-even-bg: rgba(0, 0, 0, 0.03);
+}
+
+/* Night / Dark Theme (Lighter Black Base matching #1c1a1a) */
+html.dark {
+  --bg-main: #1c1a1a;
+  --bg-header: rgba(28, 26, 26, 0.92);
+  --border-subtle: #332f2f;
+  --border-bright: #4d4747;
+  --text-main: #f5f5f5;
+  --text-muted: #b8b0b0;
+  --text-dim: #7d7575;
+  --accent-emerald: #34d399;
+  --accent-mauve: var(--accent-emerald);
   --accent-lavender: #b4befe;
   --accent-blue: #89b4fa;
   --accent-sapphire: #74c7ec;
   --accent-green: #a6e3a1;
+  --accent-teal: #2dd4bf;
   --accent-peach: #fab387;
-  --cart-plastic: #181825;
-  --cart-plastic-hover: #262738;
-  --cart-sticker-bg: #11111b;
+  --card-bg: #232020;
+  --card-bg-hover: #2c2828;
+  --btn-bg: #252222;
+  --btn-bg-hover: #332f2f;
+  --main-title: #ffffff;
+  --table-even-bg: rgba(255, 255, 255, 0.03);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body {
+html,
+body {
   background-color: var(--bg-main);
   color: var(--text-main);
-  font-family: "Inconsolata", monospace;
-  font-size: 16px;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+  font-size: 14px;
   line-height: 1.6;
   letter-spacing: -0.01em;
   min-height: 100vh;
   overflow-x: hidden;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+a {
+  color: var(--accent-emerald);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* Header */
@@ -48,34 +105,63 @@ html, body {
   position: sticky;
   top: 0;
   z-index: 50;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .header-inner {
-  max-width: 860px;
+  width: 40%;
   margin: 0 auto;
   padding: 12px 20px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .back-link {
-  color: var(--accent-mauve);
-  text-decoration: none;
+  color: var(--accent-emerald);
+  text-decoration: underline;
+  text-underline-offset: 3px;
   font-size: 0.9rem;
   font-weight: 600;
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  transition: color 0.15s ease;
 }
 
 .back-link:hover {
-  color: #fff;
-  text-decoration: underline;
+  color: var(--text-main);
 }
 
-/* Container */
+/* Theme Toggle Button in Header */
+.sh-header #themeToggle {
+  margin-top: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: transform 0.15s ease;
+}
+
+.sh-header #themeToggle:hover {
+  transform: scale(1.1);
+}
+
+.sh-header #themeToggle svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Container: Width 40% */
 .sh-container {
-  max-width: 860px;
+  width: 40%;
   margin: 0 auto;
   padding: 32px 20px 60px;
   display: flex;
@@ -83,37 +169,34 @@ html, body {
   gap: 28px;
 }
 
-/* Title Section & Mascot */
+/* Title Section */
 .title-section {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 16px;
   margin-top: 4px;
-}
-
-.title-left {
-  display: flex;
-  flex-direction: column;
 }
 
 .main-title {
   font-size: 2.8rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--main-title);
   letter-spacing: -0.03em;
   line-height: 1.1;
   display: inline-block;
+  transition: color 0.2s ease;
 }
 
 .main-title::after {
   content: "_";
-  color: var(--accent-mauve);
+  color: var(--accent-emerald);
   animation: blink 1s step-end infinite;
 }
 
 @keyframes blink {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 /* Social icons below title */
@@ -121,48 +204,27 @@ html, body {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-top: 24px;
 }
 
 .social-icon-btn {
   color: var(--text-muted);
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 6px;
   border-radius: 6px;
   border: 1px solid var(--border-subtle);
-  background-color: var(--cart-plastic);
+  background-color: var(--card-bg);
   transition: all 0.15s ease;
   line-height: 0;
 }
 
 .social-icon-btn:hover {
-  color: var(--accent-mauve);
-  border-color: var(--accent-mauve);
-  background-color: var(--cart-plastic-hover);
+  color: var(--accent-emerald);
+  border-color: var(--accent-emerald);
+  background-color: var(--card-bg-hover);
   transform: translateY(-2px);
-}
-
-/* Title Right Thinking Mascot */
-.title-right {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  flex-shrink: 0;
-}
-
-.thinking-mascot {
-  width: 96px;
-  height: 96px;
-  object-fit: contain;
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  user-select: none;
-}
-
-.thinking-mascot:hover {
-  transform: scale(1.1) rotate(-5deg);
 }
 
 /* About section */
@@ -177,157 +239,55 @@ html, body {
   text-align: justify;
 }
 
-/* Old-School Cartridges Rack */
-.cartridges-rack {
-  width: 100%;
+.about-text a {
+  color: var(--accent-emerald);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
 }
 
-.rack-heading {
-  font-size: 0.85rem;
-  color: var(--accent-lavender);
-  font-weight: 700;
-  display: block;
-  margin-bottom: 12px;
-}
-
-.cartridges-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 12px;
-}
-
-/* Old-School Cartridge Physical Shell */
-.cartridge {
-  background-color: var(--cart-plastic);
-  border: 1px solid #313244;
-  border-top: 3px solid var(--cart-accent);
-  border-radius: 4px 4px 2px 2px;
-  padding: 6px;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  position: relative;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35), inset 1px 1px 0 rgba(255, 255, 255, 0.05);
-  cursor: pointer;
-}
-
-.cartridge:hover {
-  background-color: var(--cart-plastic-hover);
-  border-color: var(--cart-accent);
-}
-
-/* Top Grip & Code */
-.cart-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 4px;
-  font-size: 0.65rem;
-  color: var(--text-dim);
-}
-
-.cart-grip {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  width: 24px;
-}
-
-.cart-grip span {
-  height: 1px;
-  background-color: #45475a;
-  display: block;
-  width: 100%;
-}
-
-.cart-arrow {
-  font-size: 0.6rem;
-  color: var(--text-dim);
-}
-
-.cartridge:hover .cart-arrow {
-  color: var(--cart-accent);
-}
-
-.cart-code {
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: var(--cart-accent);
-  letter-spacing: 0.05em;
-}
-
-/* Cartridge Recessed Sticker / Label */
-.cart-label {
-  background-color: var(--cart-sticker-bg);
-  border: 1px solid #232436;
-  border-radius: 2px;
-  padding: 8px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  overflow: hidden;
-  height: 96px;
-  justify-content: space-between;
-}
-
-.label-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 4px;
-}
-
-.label-title {
-  font-size: 0.85rem;
-  font-weight: 800;
-  color: var(--cart-accent);
-  letter-spacing: 0.04em;
-}
-
-.label-sub {
-  font-size: 0.65rem;
-  color: var(--text-dim);
-  text-transform: uppercase;
-}
-
-/* Fixed-size Description text block */
-.label-desc-wrap {
-  height: 44px;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-start;
-}
-
-.label-desc {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  line-height: 1.35;
-  margin: 0;
-  opacity: 0.45;
-}
-
-.cartridge:hover .label-desc {
-  opacity: 1;
+.about-text a:hover {
   color: var(--text-main);
 }
 
-.label-footer {
+/* Simple Unordered Navigation List */
+.links-section {
+  width: 100%;
+}
+
+.sh-links-list {
+  list-style-type: disc;
+  padding-left: 1.4rem;
+  margin: 0;
   display: flex;
-  justify-content: flex-end;
-  margin-top: 2px;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.insert-hint {
-  font-size: 0.65rem;
+.sh-links-list li {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-main);
+}
+
+.sh-links-list li::marker {
+  color: var(--accent-emerald);
+}
+
+.sh-link-title {
+  color: var(--accent-emerald);
   font-weight: 700;
-  color: var(--text-dim);
-  letter-spacing: 0.05em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
 }
 
-.cartridge:hover .insert-hint {
-  color: var(--cart-accent);
+.sh-link-title:hover {
+  color: var(--text-main);
+}
+
+.sh-link-desc {
+  color: var(--text-muted);
 }
 
 /* 88x31 Micro-Badge Matrix (Tightly Attached) */
@@ -341,6 +301,7 @@ html, body {
   color: var(--text-dim);
   margin-bottom: 8px;
   text-transform: lowercase;
+  display: block;
 }
 
 .matrix-grid {
@@ -352,9 +313,13 @@ html, body {
 
 .badge-link {
   display: inline-block;
+  text-decoration: none;
   line-height: 0;
-  border: 1px solid #313244;
-  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  border: 1px solid var(--border-subtle);
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
   user-select: none;
 }
 
@@ -363,9 +328,17 @@ html, body {
 }
 
 .badge-clickable:hover {
-  border-color: var(--accent-mauve);
+  border-color: var(--accent-emerald);
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 0 0 8px rgba(203, 166, 247, 0.25);
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.18),
+    0 0 8px rgba(5, 150, 105, 0.25);
+}
+
+html.dark .badge-clickable:hover {
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.5),
+    0 0 8px rgba(52, 211, 153, 0.3);
 }
 
 .badge-img {
@@ -389,26 +362,38 @@ html, body {
 }
 
 .sh-footer a {
-  color: var(--accent-mauve);
-  text-decoration: none;
+  color: var(--accent-emerald);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .sh-footer a:hover {
-  text-decoration: underline;
+  color: var(--text-main);
 }
 
 /* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .header-inner,
+  .sh-container {
+    width: 65%;
+  }
+}
+
 @media (max-width: 720px) {
   .main-title {
     font-size: 2.2rem;
   }
 
+  .header-inner,
   .sh-container {
-    padding: 20px 14px 40px;
-    gap: 20px;
+    width: 92%;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
-  .cartridges-grid {
-    grid-template-columns: 1fr;
+  .sh-container {
+    padding-top: 20px;
+    padding-bottom: 40px;
+    gap: 20px;
   }
 }
